@@ -1,0 +1,651 @@
+[
+    {
+        "name":  "力量",
+        "category":  "MAIN_STAT",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "amulet",
+                      "ring1",
+                      "ring2",
+                      "weapon"
+                  ]
+    },
+    {
+        "name":  "[+]% 近战伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[+]% 物理伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "amulet",
+                      "weapon"
+                  ]
+    },
+    {
+        "name":  "[+]% 核心技能伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[+]% 对精英伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "weapon",
+                      "amulet"
+                  ]
+    },
+    {
+        "name":  "[+]% 全属性伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "amulet"
+                  ]
+    },
+    {
+        "name":  "[+]% 狂暴时伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[+]% 流血目标伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "weapon",
+                      "amulet",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[+]% 持续性伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "amulet"
+                  ]
+    },
+    {
+        "name":  "[+]% 远距离伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[+]% 健康敌人伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "weapon",
+                      "amulet",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[+]% 暴击伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "weapon",
+                      "amulet",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[+]% 易伤伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "weapon",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[+]% 攻击速度",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "最大生命值",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "pants",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[+]% 压制伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "weapon",
+                      "amulet",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[+]% 附加武器伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "weapon"
+                  ]
+    },
+    {
+        "name":  "[+]% 暴击率",
+        "category":  "CRIT_CHANCE",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "护甲值",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "[+]% 冷却时间缩减",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "生命回复",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "[+]% 幸运一击几率",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "火焰抗性",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "闪电抗性",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "毒素抗性",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "暗影抗性",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "冰霜抗性",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "物理抗性",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "全元素抗性",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "至先祖之锤",
+        "category":  "MISC",
+        "classes":  "barbarian",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "至痛割",
+        "category":  "MISC",
+        "classes":  "barbarian",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "至双重横扫",
+        "category":  "MISC",
+        "classes":  "barbarian",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "至扬石飞沙",
+        "category":  "MISC",
+        "classes":  "barbarian",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "至旋风斩",
+        "category":  "MISC",
+        "classes":  "barbarian",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "至核心技能",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "[+]% 资源消耗减免",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon"
+                  ]
+    },
+    {
+        "name":  "击中回复生命",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "幸运一击回复资源",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "[+]% 强固生成量",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "[+]% 屏障生成",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "gloves"
+                  ]
+    },
+    {
+        "name":  "消灭获得怒气",
+        "category":  "MISC",
+        "classes":  "barbarian",
+        "slots":  [
+                      "weapon"
+                  ]
+    },
+    {
+        "name":  "幸运一击回复资源(武器)",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "weapon"
+                  ]
+    },
+    {
+        "name":  "消灭回复生命",
+        "category":  "MISC",
+        "classes":  "all",
+        "slots":  [
+                      "weapon"
+                  ]
+    },
+    {
+        "name":  "武器伤害",
+        "category":  "A_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "weapon"
+                  ]
+    },
+    {
+        "name":  "[×]% 狂暴时伤害",
+        "category":  "B_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[×]% 近战伤害",
+        "category":  "B_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[×]% 远距离伤害",
+        "category":  "B_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[×]% 健康敌人伤害",
+        "category":  "B_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "weapon",
+                      "amulet",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[×]% 控制敌人伤害",
+        "category":  "B_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "amulet"
+                  ]
+    },
+    {
+        "name":  "[×]% 持续伤害",
+        "category":  "B_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "amulet"
+                  ]
+    },
+    {
+        "name":  "[×]% 易伤敌人伤害",
+        "category":  "B_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "weapon",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "[×]% 核心技能伤害",
+        "category":  "B_ADD",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "物理伤害增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "amulet",
+                      "ring1",
+                      "ring2",
+                      "weapon"
+                  ]
+    },
+    {
+        "name":  "近战伤害增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "核心技能增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "暴击伤害增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon",
+                      "amulet",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "易伤伤害增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "压制伤害增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "weapon",
+                      "amulet",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "持续伤害增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "amulet",
+                      "weapon"
+                  ]
+    },
+    {
+        "name":  "狂暴时伤害增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "控制敌人增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "helm",
+                      "chest",
+                      "gloves",
+                      "pants",
+                      "boots",
+                      "amulet"
+                  ]
+    },
+    {
+        "name":  "健康敌人增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "weapon",
+                      "amulet",
+                      "ring1",
+                      "ring2"
+                  ]
+    },
+    {
+        "name":  "全伤害增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon"
+                  ]
+    },
+    {
+        "name":  "火焰伤害增倍[×]%",
+        "category":  "C_MULTI",
+        "classes":  "all",
+        "slots":  [
+                      "gloves",
+                      "weapon"
+                  ]
+    }
+]

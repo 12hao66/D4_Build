@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>词缀维护工具</title>
+<style>
+:root { --bg:#1a1a1e; --panel:#222228; --border:#333340; --text:#e0d8c0; --muted:#888878; --accent:#e8a020; --danger:#d04040; --green:#40a060; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:14px/1.5 'Segoe UI',sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column}
+.toolbar{display:flex;gap:10px;padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--border);align-items:center}
+.toolbar input{flex:1;max-width:260px;background:#111;border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:4px;outline:none}
+.toolbar input:focus{border-color:var(--accent)}
+.toolbar button{padding:6px 14px;border:1px solid var(--border);border-radius:4px;cursor:pointer;color:var(--text);background:var(--panel);font-size:13px}
+.toolbar button:hover{background:#333}
+.toolbar button.accent{background:var(--accent);color:#111;border-color:var(--accent);font-weight:600}
+.main{display:flex;flex:1;overflow:hidden}
+.list-panel{width:320px;overflow-y:auto;border-right:1px solid var(--border);padding:8px 0}
+.list-panel .group-label{padding:6px 16px;font-size:11px;color:var(--accent);text-transform:uppercase;font-weight:700;letter-spacing:.5px}
+.list-panel .affix-item{padding:7px 16px 7px 24px;cursor:pointer;font-size:13px;border-left:3px solid transparent;transition:background .1s}
+.list-panel .affix-item:hover{background:#2a2a32}
+.list-panel .affix-item.active{background:#2a2a32;border-left-color:var(--accent)}
+.list-panel .affix-item .hint{font-size:10px;color:var(--muted);margin-left:6px}
+.edit-panel{flex:1;padding:20px 24px;overflow-y:auto}
+.edit-panel h3{margin-bottom:16px;font-size:15px;color:var(--accent)}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
+.form-group input,.form-group select{width:100%;max-width:400px;background:#111;border:1px solid var(--border);color:var(--text);padding:7px 10px;border-radius:4px;outline:none;font-size:13px}
+.form-group input:focus,.form-group select:focus{border-color:var(--accent)}
+.chip-group{display:flex;flex-wrap:wrap;gap:6px;max-width:600px}
+.chip{padding:5px 12px;border:1px solid var(--border);border-radius:14px;font-size:12px;cursor:pointer;user-select:none;transition:all .15s}
+.chip:hover{border-color:var(--accent)}
+.chip.on{background:var(--accent);color:#111;border-color:var(--accent)}
+.actions{display:flex;gap:8px;margin-top:20px}
+.actions button{padding:7px 18px;border-radius:4px;cursor:pointer;font-size:13px;border:1px solid var(--border);color:var(--text);background:var(--panel)}
+.actions button.accent{background:var(--accent);color:#111;border-color:var(--accent);font-weight:600}
+.actions button.danger{background:var(--danger);color:#fff;border-color:var(--danger)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--accent);color:#111;padding:8px 20px;border-radius:6px;font-size:13px;font-weight:600;opacity:0;transition:opacity .3s;pointer-events:none;z-index:100}
+.toast.show{opacity:1}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:flex;align-items:center;justify-content:center}.modal-overlay.hidden{display:none}.modal{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:20px;width:600px;max-height:80vh;display:flex;flex-direction:column}.modal h3{color:var(--accent);margin-bottom:8px;font-size:14px}.modal textarea{flex:1;min-height:320px;background:#111;border:1px solid var(--border);color:var(--text);padding:10px;border-radius:4px;outline:none;font-size:13px;resize:vertical;font-family:Consolas,monospace}.modal textarea:focus{border-color:var(--accent)}.modal .hint{font-size:11px;color:var(--muted);margin:6px 0 12px}.modal .modal-actions{display:flex;gap:8px;justify-content:flex-end}.modal .result{font-size:12px;color:var(--green);margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <input type="text" id="search" placeholder="搜索词缀名..." oninput="renderList()">
+  <button onclick="newAffix()" class="accent">+ 新增</button>
+  <button onclick="exportJSON()">导出 JSON</button>
+  <button onclick="document.getElementById('import-file').click()">导入 JSON</button>
+  <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(this)">
+  <span style="margin-left:auto;font-size:12px;color:var(--muted)" id="stats"></span>
+<button onclick="openBatchImport()" >📋 批量导入</button></div>
+
+<div class="main">
+  <div class="list-panel" id="list"></div>
+  <div class="edit-panel" id="edit">
+    <h3>选择一个词缀或点击「新增」</h3>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const CATEGORIES = ['A_ADD','B_ADD','C_MULTI','MAIN_STAT','CRIT_CHANCE','MISC'];
+const CAT_LABELS = {A_ADD:'A区 [+] 加法',B_ADD:'B区 [×] 前缀',C_MULTI:'独立乘区',MAIN_STAT:'主属性',CRIT_CHANCE:'暴击率',MISC:'其他'};
+const ALL_CLASSES = ['barbarian','paladin','druid','necromancer','rogue','sorcerer','warlock','spiritborn'];
+const CLASS_NAMES = {barbarian:'野蛮人',paladin:'圣骑士',druid:'德鲁伊',necromancer:'死灵法师',rogue:'游侠',sorcerer:'巫师',warlock:'术士',spiritborn:'灵巫'};
+const ALL_SLOTS = ['helm','chest','gloves','pants','boots','amulet','ring1','ring2','weapon'];
+const SLOT_NAMES = {helm:'头盔',chest:'胸甲',gloves:'手套',pants:'裤子',boots:'靴子',amulet:'护符',ring1:'戒指1',ring2:'戒指2',weapon:'武器'};
+
+let pool = [];
+let editingIdx = -1;
+
+async function init() {
+  try {
+    const r = await fetch('data/affixes.json');
+    if (!r.ok) throw new Error('fetch failed');
+    pool = await r.json();
+  } catch(e) {
+    // file:// 协议下 fetch 不可用，提示导入
+    if (window.location.protocol === 'file:') {
+      document.getElementById('list').innerHTML = '<div style="padding:24px;text-align:center"><p style="color:var(--muted);margin-bottom:12px">file:// 下无法自动加载，请导入 affixes.json</p><button class="accent" onclick="document.getElementById(\'import-file\').click()" style="padding:8px 20px;font-size:14px">📥 导入 affixes.json</button></div>';
+      document.getElementById('stats').textContent = '未加载';
+      return;
+    }
+    pool = [];
+  }
+  renderAll();
+}
+function renderAll() { renderList(); if (editingIdx >= 0) renderEdit(editingIdx); document.getElementById('stats').textContent = pool.length + ' 条词缀'; }
+
+function renderList() {
+  const q = (document.getElementById('search').value || '').toLowerCase();
+  const filtered = q ? pool.filter(a => a.name.toLowerCase().includes(q)) : pool;
+  const groups = {};
+  filtered.forEach((a,i) => { const cat = a.category||'MISC'; if(!groups[cat]) groups[cat]=[]; groups[cat].push({...a,_idx:pool.indexOf(a)}); });
+  
+  let html = '';
+  for (const cat of CATEGORIES) {
+    if (!groups[cat] || !groups[cat].length) continue;
+    html += '<div class="group-label">' + (CAT_LABELS[cat]||cat) + '</div>';
+    groups[cat].forEach(a => {
+      const cls = a._idx === editingIdx ? ' active' : '';
+      const hint = a.classes === 'all' ? '' : ' <span class="hint">' + (Array.isArray(a.classes)?a.classes.map(c=>CLASS_NAMES[c]||c).join(','):a.classes) + '</span>';
+      html += '<div class="affix-item' + cls + '" onclick="selectAffix(' + a._idx + ')">' + esc(a.name) + hint + '</div>';
+    });
+  }
+  if (!html) html = '<div style="padding:16px;color:var(--muted)">无匹配词缀</div>';
+  document.getElementById('list').innerHTML = html;
+}
+
+function selectAffix(idx) { editingIdx = idx; renderAll(); }
+
+function newAffix() {
+  editingIdx = -1;
+  renderEdit(-1);
+  renderList();
+}
+
+function renderEdit(idx) {
+  const a = idx >= 0 ? pool[idx] : {name:'',category:'A_ADD',classes:'all',slots:[]};
+  const panel = document.getElementById('edit');
+  let html = '<h3>' + (idx>=0?'编辑词缀':'新增词缀') + '</h3>';
+  html += '<div class="form-group"><label>词缀名</label><input id="e-name" value="' + esc(a.name) + '"></div>';
+  html += '<div class="form-group"><label>分类</label><select id="e-cat">';
+  CATEGORIES.forEach(c => { html += '<option value="' + c + '" ' + (a.category===c?'selected':'') + '>' + (CAT_LABELS[c]||c) + '</option>'; });
+  html += '</select></div>';
+  html += '<div class="form-group"><label>适用职业</label><div class="chip-group">';
+  html += '<div class="chip' + (a.classes==='all'?' on':'') + '" onclick="this.classList.toggle(\'on\')" data-all="1">全职业</div>';
+  ALL_CLASSES.forEach(c => {
+    const on = a.classes==='all' || (Array.isArray(a.classes)&&a.classes.includes(c));
+    html += '<div class="chip' + (on?' on':'') + '" data-cls="' + c + '" onclick="toggleChip(this)">' + CLASS_NAMES[c] + '</div>';
+  });
+  html += '</div></div>';
+  html += '<div class="form-group"><label>适用部位</label><div class="chip-group">';
+  ALL_SLOTS.forEach(s => {
+    const on = a.slots.includes(s);
+    html += '<div class="chip' + (on?' on':'') + '" data-slot="' + s + '" onclick="toggleChip(this)">' + SLOT_NAMES[s] + '</div>';
+  });
+  html += '</div></div>';
+  html += '<div class="actions">';
+  html += '<button class="accent" onclick="saveAffix(' + idx + ')">保存</button>';
+  if (idx >= 0) html += '<button class="danger" onclick="deleteAffix(' + idx + ')">删除</button>';
+  html += '</div>';
+  panel.innerHTML = html;
+}
+
+function toggleChip(el) { el.classList.toggle('on'); }
+
+function saveAffix(idx) {
+  const name = document.getElementById('e-name').value.trim();
+  if (!name) return toast('请输入词缀名');
+  const category = document.getElementById('e-cat').value;
+  
+  // Collect classes
+  const allChip = document.querySelector('[data-all]');
+  let classes = 'all';
+  if (!allChip.classList.contains('on')) {
+    const selected = [];
+    document.querySelectorAll('[data-cls].on').forEach(c => selected.push(c.dataset.cls));
+    classes = selected.length ? selected : 'all';
+  }
+  
+  // Collect slots
+  const slots = [];
+  document.querySelectorAll('[data-slot].on').forEach(s => slots.push(s.dataset.slot));
+  if (!slots.length) return toast('请选择至少一个部位');
+  
+  const entry = {name, category, classes, slots};
+  if (idx >= 0) pool[idx] = entry; else pool.push(entry);
+  
+  saveToDisk();
+  editingIdx = pool.indexOf(entry);
+  renderAll();
+  toast('已保存');
+}
+
+function deleteAffix(idx) {
+  if (!confirm('确认删除「' + pool[idx].name + '」？')) return;
+  pool.splice(idx, 1);
+  saveToDisk();
+  editingIdx = -1;
+  renderAll();
+  toast('已删除');
+}
+
+function getSelection() {
+  // Get selected classes from chips
+  const allOn = document.querySelector('[data-all]')?.classList.contains('on');
+  let classes = 'all';
+  if (!allOn) {
+    const sel = [];
+    document.querySelectorAll('[data-cls].on').forEach(c => sel.push(c.dataset.cls));
+    classes = sel.length ? sel : 'all';
+  }
+  const slots = [];
+  document.querySelectorAll('[data-slot].on').forEach(s => slots.push(s.dataset.slot));
+  return {classes, slots};
+}
+
+async function saveToDisk() {
+  try {
+    const res = await fetch('/api/save-affixes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(pool, null, 2)
+    });
+    if (!res.ok) throw new Error('save failed');
+    const data = await res.json();
+    toast('已保存到文件 (' + data.count + ' 条)');
+  } catch(e) {
+    toast('保存失败: ' + e.message + ' (请确保使用 python server.py 启动)');
+  }
+}
+
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(pool, null, 2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'affixes.json'; a.click(); URL.revokeObjectURL(a.href);
+  toast('已导出 affixes.json');
+}
+
+function importJSON(input) {
+  const f = input.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!Array.isArray(data)) return toast('格式错误');
+      pool = data;
+      editingIdx = -1;
+      renderAll();
+      toast('已导入 ' + pool.length + ' 条词缀 (记得导出保存到 data/affixes.json)');
+    } catch(ex) { toast('解析失败'); }
+  };
+  r.readAsText(f);
+  input.value = '';
+}
+
+
+function openBatchImport() {
+  document.getElementById('batch-modal').classList.remove('hidden');
+  document.getElementById('batch-input').focus();
+  document.getElementById('batch-result').textContent = '';
+}
+function closeBatchImport() {
+  document.getElementById('batch-modal').classList.add('hidden');
+}
+function doBatchImport() {
+  const raw = document.getElementById('batch-input').value;
+  const lines = raw.split(/[\n\r]+/).map(l => l.trim()).filter(l => l.length > 0);
+  if (!lines.length) return toast('请粘贴词缀名');
+  
+  const existing = new Set(pool.map(a => a.name));
+  let added = 0, skipped = 0;
+  
+  lines.forEach(name => {
+    if (existing.has(name)) { skipped++; return; }
+    
+    let category = 'MISC';
+    if (name.endsWith('x')) category = 'C_MULTI';
+    else if (name.startsWith('x')) category = 'B_ADD';
+    else if (name.startsWith('+')) category = 'A_ADD';
+    
+    pool.push({ name, category, classes: 'all', slots: [] });
+    existing.add(name);
+    added++;
+  });
+  
+  document.getElementById('batch-result').textContent = '新增 ' + added + ' 条，跳过重复 ' + skipped + ' 条';
+  document.getElementById('batch-input').value = '';
+  renderAll();
+  saveToDisk();
+}
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+init();
+</script>
+
+<div class="modal-overlay hidden" id="batch-modal">
+  <div class="modal">
+    <h3>批量导入词缀</h3>
+    <textarea id="batch-input" placeholder="每行一个词缀名，例如：&#10;+力量&#10;+暴击伤害&#10;x暴击伤害增倍&#10;+冰霜抗性&#10;+攻击速度&#10;全伤害增倍x"></textarea>
+    <div class="hint">默认分类：+开头→A_ADD，x开头→B_ADD，x结尾→C_MULTI，其余→MISC。与已有词缀同名的自动跳过。</div>
+    <div class="modal-actions">
+      <button onclick="closeBatchImport()">取消</button>
+      <button class="accent" onclick="doBatchImport()">导入</button>
+    </div>
+    <div class="result" id="batch-result"></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D4 工具集 S13</title>
+<style>
+:root {
+  --bg: #0d0d0f; --card: #141418; --border: #242430;
+  --fire-1: #ffd060; --fire-2: #e8a020; --fire-3: #b06010;
+  --text: #f0ead8; --muted: #6a6050;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text);
+  min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+  background-image:
+    radial-gradient(ellipse 60% 30% at 50% 0%, rgba(180,100,0,.15) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 40% at 0% 100%, rgba(100,30,0,.10) 0%, transparent 55%);
+}
+header { text-align: center; padding: 60px 20px 40px; }
+header h1 { font-size: 32px; font-weight: 700; color: var(--fire-1); letter-spacing: 2px; }
+header .sub { font-size: 14px; color: var(--muted); margin-top: 6px; }
+.grid { display: grid; grid-template-columns: repeat(3, 280px); gap: 20px; padding: 0 20px 60px; }
+.card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 28px 24px; cursor: pointer; transition: all .2s; text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.card:hover { border-color: var(--fire-3); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,.4); }
+.card .icon { font-size: 36px; }
+.card h3 { font-size: 16px; font-weight: 600; color: var(--fire-2); }
+.card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.card .tag { font-size: 11px; color: var(--fire-3); border: 1px solid var(--fire-3); padding: 2px 10px; border-radius: 10px; align-self: flex-start; }
+footer { margin-top: auto; padding: 20px; font-size: 11px; color: var(--muted); }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; max-width: 320px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>D4 · BUILD TOOLKIT</h1>
+  <div class="sub">暗黑破坏神4 · 第13赛季 · 装备构建工具集</div>
+</header>
+
+<div class="grid">
+  <a href="build.html" class="card">
+    <div class="icon">⚔️</div>
+    <h3>装备配置器</h3>
+    <p>配置各部位装备词缀，自动归类 A区 / B区 / 独立乘区，汇总属性并推送到模拟器。</p>
+    <span class="tag">Build Config</span>
+  </a>
+
+  <a href="d4_barbarian_s13_v5_6.html" class="card">
+    <div class="icon">🔥</div>
+    <h3>伤害模拟器</h3>
+    <p>S13 完整伤害链路计算：武器基础 → 主属性 → A区加法 → B区乘算 → 独立乘区 → 暴击/易伤/压制。</p>
+    <span class="tag">Damage Sim</span>
+  </a>
+
+  <a href="admin.html" class="card">
+    <div class="icon">🛠️</div>
+    <h3>参数维护</h3>
+    <p>管理词缀数据库：增删改查、批量导入、分类标注。数据同步至装备配置器。</p>
+    <span class="tag">Admin</span>
+  </a>
+</div>
+
+<footer>D4 Toolkit S13 · 本地工具集</footer>
+
+</body>
+</html>

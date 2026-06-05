@@ -1,0 +1,6206 @@
+[
+  {
+    "id": "barb_ww_bleed",
+    "class": "barbarian",
+    "name": "旋风斩流血",
+    "desc": "双持·流血增伤·高机动",
+    "season": 13,
+    "weaponMode": "dual",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "bludgeon": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [],
+        "tempers": [],
+        "aspect": null,
+        "gem": null
+      },
+      "slash": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [],
+        "tempers": [],
+        "aspect": null,
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "barb_bash_op",
+    "class": "barbarian",
+    "name": "猛击压制",
+    "desc": "钝击·压制流·高爆发",
+    "season": 13,
+    "weaponMode": "bludgeon",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [],
+        "tempers": [],
+        "aspect": null,
+        "gem": null
+      },
+      "offhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [],
+        "tempers": [],
+        "aspect": null,
+        "gem": null
+      },
+      "bludgeon": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          }
+        ],
+        "tempers": [],
+        "aspect": null,
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "slash": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [],
+        "tempers": [],
+        "aspect": null,
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "barb_hota",
+    "class": "barbarian",
+    "name": "先祖之锤",
+    "desc": "斩击·暴击·一击必杀",
+    "season": 13,
+    "weaponMode": "slash",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [],
+        "tempers": [],
+        "aspect": null,
+        "gem": null
+      },
+      "offhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [],
+        "tempers": [],
+        "aspect": null,
+        "gem": null
+      },
+      "slash": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          }
+        ],
+        "tempers": [],
+        "aspect": null,
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "bludgeon": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [],
+        "tempers": [],
+        "aspect": null,
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "sorc_fireball",
+    "class": "sorcerer",
+    "name": "火球暴击",
+    "desc": "远程·暴击·AOE清场",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "sorc_frozen_orb",
+    "class": "sorcerer",
+    "name": "冰霜球",
+    "desc": "冰系·控制·持续输出",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "sorc_chain_lightning",
+    "class": "sorcerer",
+    "name": "连锁闪电",
+    "desc": "电系·暴击·高攻速",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "rogue_pen_shot",
+    "class": "rogue",
+    "name": "穿透射击",
+    "desc": "远程·暴击·穿透AOE",
+    "season": 13,
+    "weaponMode": "both",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "rogue_barrage",
+    "class": "rogue",
+    "name": "乱射",
+    "desc": "近战·高攻速·弹幕",
+    "season": 13,
+    "weaponMode": "both",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "rogue_shadow_step",
+    "class": "rogue",
+    "name": "暗影步刺杀",
+    "desc": "近战·暴击·暗影伤害",
+    "season": 13,
+    "weaponMode": "both",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "druid_storm_wolf",
+    "class": "druid",
+    "name": "风暴狼",
+    "desc": "狼人·闪电·暴击",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "druid_earth",
+    "class": "druid",
+    "name": "大地之力",
+    "desc": "熊人·压制·高生存",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "druid_shred",
+    "class": "druid",
+    "name": "撕碎",
+    "desc": "狼人·暴击·高机动",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "necro_bone_spear",
+    "class": "necromancer",
+    "name": "骨矛",
+    "desc": "远程·暴击·物理穿透",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "necro_blood_surge",
+    "class": "necromancer",
+    "name": "血涌",
+    "desc": "近战·压制·生命回复",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 物理伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 物理伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "necro_minion",
+    "class": "necromancer",
+    "name": "骷髅大军",
+    "desc": "召唤流·持续伤害·高生存",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "pala_holy_hammer",
+    "class": "paladin",
+    "name": "圣光之锤",
+    "desc": "神圣·AOE·祝福",
+    "season": 13,
+    "weaponMode": "both",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "pala_fist_heavens",
+    "class": "paladin",
+    "name": "天堂之拳",
+    "desc": "神圣·远程·闪电",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "pala_retribution",
+    "class": "paladin",
+    "name": "惩戒光环",
+    "desc": "光环·持续伤害·坦克",
+    "season": 13,
+    "weaponMode": "both",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "力量"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "warlock_shadow_bolt",
+    "class": "warlock",
+    "name": "暗影箭",
+    "desc": "暗影·暴击·远程",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 远距离伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 远距离伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "warlock_curse_fire",
+    "class": "warlock",
+    "name": "诅咒之炎",
+    "desc": "火焰·DOT·诅咒增伤",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "warlock_soul_harvest",
+    "class": "warlock",
+    "name": "灵魂收割",
+    "desc": "灵魂·爆发·击杀重置",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "spirit_blade_storm",
+    "class": "spiritborn",
+    "name": "灵刃风暴",
+    "desc": "近战·灵能·高攻速",
+    "season": 13,
+    "weaponMode": "both",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 近战伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 近战伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "spirit_ancestral_fury",
+    "class": "spiritborn",
+    "name": "先祖之怒",
+    "desc": "先祖·暴击·爆发",
+    "season": 13,
+    "weaponMode": "main",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": false,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  },
+  {
+    "id": "spirit_soul_resonance",
+    "class": "spiritborn",
+    "name": "灵魂共鸣",
+    "desc": "持续伤害·灵能·生存",
+    "season": 13,
+    "weaponMode": "both",
+    "slots": {
+      "helm": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "chest": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "保护者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "gloves": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "pants": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家黄宝石"
+        }
+      },
+      "boots": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "最大生命值"
+          },
+          {
+            "name": "[+]% 全属性伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势精英之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      },
+      "amulet": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring1": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击率"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "aspect": {
+          "name": "暴击伤害增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "ring2": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "最大生命值"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "核心技能增伤[×]%",
+          "amuletBoosted": false
+        },
+        "gem": {
+          "name": "皇家骷髅石"
+        }
+      },
+      "mainhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 核心技能伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          },
+          {
+            "name": "[+]% 对精英伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "优势大师之威能",
+          "amuletBoosted": true
+        },
+        "gem": {
+          "name": "皇家红宝石"
+        }
+      },
+      "offhand": {
+        "enabled": true,
+        "itemPower": 900,
+        "affixes": [
+          {
+            "name": "[+]% 持续性伤害"
+          },
+          {
+            "name": "[+]% 暴击伤害"
+          }
+        ],
+        "tempers": [
+          {
+            "name": "[+]% 持续性伤害"
+          }
+        ],
+        "aspect": {
+          "name": "元素使者之威能",
+          "amuletBoosted": false
+        },
+        "gem": null
+      }
+    }
+  }
+]

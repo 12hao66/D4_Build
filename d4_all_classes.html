@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D4 伤害计算器 S13 - 全职业</title>
+<style>
+* { box-sizing: border-box; }
+
+html {
+  padding: 0;
+  margin: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+html.dark {
+  background: #303030;
+  color: #D2C8AE;
+}
+
+body {
+  position: relative;
+  font-size: 15px;
+  font-family: 'Microsoft YaHei', sans-serif;
+  padding: 0;
+  margin: 0;
+  min-width: 300px;
+}
+
+/* Header */
+.main-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background: #222;
+  border-bottom: 2px solid #D2C8AE;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.main-header h1 {
+  margin: 0 16px;
+  color: #D2C8AE;
+  font-size: 24px;
+  text-shadow: 3px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.season-badge {
+  background: #a50905;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  border: 1px solid #D2C8AE;
+  box-shadow: 0 0 8px rgba(165,9,5,0.5);
+}
+
+/* Main Layout - 3 Columns */
+.content-page {
+  display: grid;
+  grid-template-columns: 400px 400px 1fr;
+  gap: 16px;
+  padding: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1400px) {
+  .content-page {
+    grid-template-columns: 1fr;
+  }
+  .panel-right {
+    position: static !important;
+  }
+}
+
+/* Panels */
+.panel {
+  background: #222222;
+  border: 1px solid #D2C8AE;
+  border-radius: 6px;
+  box-shadow: inset 0 0 4px 2px #ffce4f1a, 1px 1px 4px 1px #fbd57220;
+  overflow: hidden;
+}
+
+.panel-left, .panel-middle {
+  height: fit-content;
+}
+
+.panel-right {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+}
+
+.panel-header {
+  background: linear-gradient(90deg, rgba(165,9,5,0.3) 0%, transparent 100%);
+  padding: 12px 16px;
+  border-bottom: 1px solid #444;
+  font-size: 14px;
+  font-weight: bold;
+  color: #D2C8AE;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-body {
+  padding: 16px;
+}
+
+/* Section */
+.section {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #a50905;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #444;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: #D2C8AE;
+  margin-bottom: 6px;
+}
+
+.form-group label.emphasize {
+  font-weight: bold;
+  color: #E3DAC3;
+}
+
+.form-group label small {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  font-weight: normal;
+  margin-top: 2px;
+}
+
+.form-group input[type="number"],
+.form-group select {
+  width: 100%;
+  background: #333;
+  color: #D2C8AE;
+  border: 1px solid #555;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.form-group input[type="number"]:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #a50905;
+  box-shadow: 0 0 0 2px rgba(165, 9, 5, 0.2);
+}
+
+.form-group input.highlight {
+  border-color: #a50905;
+  background: #3a2020;
+}
+
+.form-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #a50905;
+  cursor: pointer;
+}
+
+.checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox-wrap label {
+  margin: 0;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* Input with Lock */
+.input-lock-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.input-lock-group input {
+  flex: 1;
+}
+
+.lock-btn {
+  background: #444;
+  border: 1px solid #666;
+  color: #888;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.lock-btn:hover {
+  border-color: #a50905;
+  color: #D2C8AE;
+}
+
+.lock-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Dynamic Modifiers */
+.modifier-row {
+  display: grid;
+  grid-template-columns: 1fr 100px 32px;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.modifier-row input[type="text"] {
+  background: #333;
+  color: #D2C8AE;
+  border: 1px solid #555;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.modifier-row input[type="text"]::placeholder {
+  color: #666;
+}
+
+.modifier-row input[type="number"] {
+  width: 100%;
+  background: #333;
+  color: #D2C8AE;
+  border: 1px solid #555;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.modifier-row button {
+  background: transparent;
+  border: 1px solid #555;
+  color: #888;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.modifier-row button:hover {
+  border-color: #a50905;
+  color: #a50905;
+}
+
+.add-modifier-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px dashed #555;
+  color: #888;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 8px;
+  transition: all 0.2s;
+}
+
+.add-modifier-btn:hover {
+  border-color: #a50905;
+  color: #D2C8AE;
+  background: rgba(165,9,5,0.1);
+}
+
+/* Buttons */
+.btn {
+  background: #a50905;
+  color: #fff;
+  border: 1px solid #D2C8AE;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  box-shadow: inset 0 0 8px 2px #dd0707, 0 0 6px 1px #d2c8ae88;
+  transform: translateY(-1px);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+/* Result Display */
+.result-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.result-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+.result-empty-text {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.result-hero {
+  text-align: center;
+  padding: 24px 20px;
+  border-bottom: 2px solid #444;
+  margin-bottom: 20px;
+  background: linear-gradient(180deg, rgba(165,9,5,0.1) 0%, transparent 100%);
+}
+
+.result-label {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.result-value {
+  font-size: 42px;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.3);
+  font-family: 'Georgia', serif;
+  margin-bottom: 8px;
+}
+
+.result-sub {
+  font-size: 12px;
+  color: #D2C8AE;
+  line-height: 1.6;
+}
+
+.result-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.result-step {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #2a2a2a;
+  border-radius: 4px;
+  align-items: center;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.result-step:hover {
+  background: #333;
+}
+
+.result-step.highlight {
+  background: #3a2020;
+  border-left-color: #a50905;
+  box-shadow: 0 0 8px rgba(165,9,5,0.3);
+}
+
+.step-label {
+  font-size: 13px;
+  color: #D2C8AE;
+}
+
+.step-mult {
+  font-size: 11px;
+  color: #888;
+  text-align: right;
+  font-family: 'Courier New', monospace;
+}
+
+.step-value {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFD700;
+  text-align: right;
+  font-family: 'Georgia', serif;
+}
+
+/* DPS Panel */
+.dps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  padding: 16px;
+  background: #1a1a1a;
+  border-radius: 4px;
+  margin-top: 16px;
+}
+
+.dps-stat {
+  text-align: center;
+  padding: 12px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+
+.dps-key {
+  font-size: 10px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.dps-val {
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFD700;
+  font-family: 'Georgia', serif;
+}
+
+.dps-sub {
+  font-size: 10px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #222;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+</style>
+</head>
+<body>
+
+<div class="main-header">
+  <h1>⚔ D4 伤害计算器</h1>
+  <div class="season-badge">Season 13</div>
+</div>
+
+<div class="content-page">
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LEFT PANEL - 基础属性 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="panel panel-left">
+    <div class="panel-header">📋 基础属性</div>
+    <div class="panel-body">
+
+      <!-- 职业选择 -->
+      <div class="section">
+        <div class="section-title">职业设置</div>
+        <div class="form-group">
+          <label class="emphasize" title="选择你的角色职业，影响主属性计算">
+            职业 Class
+          </label>
+          <select id="char-class" onchange="updateClassInfo()">
+            <option value="">- 选择职业 -</option>
+            <option value="Barbarian">野蛮人 Barbarian</option>
+            <option value="Druid">德鲁伊 Druid</option>
+            <option value="Necro">死灵法师 Necromancer</option>
+            <option value="Rogue">游侠 Rogue</option>
+            <option value="Sorc">法师 Sorcerer</option>
+            <option value="Spiritborn">灵族 Spiritborn</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            <span id="main-stat-label">主属性</span>
+            <small id="main-stat-info">选择职业后显示</small>
+          </label>
+          <input id="main-stat" type="number" value="5000" min="0" class="highlight"
+            oninput="updateMainStatBonus()" title="角色面板的主属性数值">
+        </div>
+
+        <div class="form-group">
+          <label>主属性伤害加成
+            <small>自动计算，不可编辑</small>
+          </label>
+          <input id="main-stat-bonus" type="number" value="0" disabled
+            style="background: #444; cursor: not-allowed;" title="由主属性自动计算">
+        </div>
+      </div>
+
+      <!-- 武器 -->
+      <div class="section">
+        <div class="section-title">⚔ 武器伤害</div>
+        <div class="form-group">
+          <label class="emphasize">
+            主手武器点伤
+            <small>从角色面板查看，取武器伤害平均值</small>
+          </label>
+          <input id="wpn1" type="number" value="3000" min="0" class="highlight">
+        </div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            副手武器点伤
+            <small>双持时填写，单手武器留 0</small>
+          </label>
+          <input id="wpn2" type="number" value="0" min="0" class="highlight">
+        </div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            附加武器伤害 [+]%
+            <small>武器词缀的附加伤害总和</small>
+          </label>
+          <input id="wpn-add" type="number" value="0" min="0" class="highlight">
+        </div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            总攻击速度 APS
+            <small>从角色面板查看，已包含所有攻速加成</small>
+          </label>
+          <input id="aps" type="number" value="1.2" step="0.01" min="0.1" class="highlight">
+        </div>
+      </div>
+
+      <!-- 技能 -->
+      <div class="section">
+        <div class="section-title">⚡ 技能设置</div>
+        <div class="form-group">
+          <label class="emphasize">
+            技能伤害倍率 %
+            <small>从技能树查看，如旋风斩 215%</small>
+          </label>
+          <input id="skill-pct" type="number" value="215" min="1" class="highlight">
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-wrap">
+            <input id="is-dot" type="checkbox" onchange="toggleDotOptions()">
+            <label>持续伤害（DoT）- 不可暴击</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            每次挥击命中数
+            <small>单次攻击命中敌人的次数</small>
+          </label>
+          <input id="hits" type="number" value="1" min="0.1" step="0.1" class="highlight">
+        </div>
+      </div>
+
+      <!-- A伤区 -->
+      <div class="section">
+        <div class="section-title">➕ 附加伤害区 [+]% (A伤区)</div>
+        <div class="form-group">
+          <label class="emphasize">
+            装备 [+]伤害合计 %
+            <small>所有装备的 [+]伤害词缀总和</small>
+          </label>
+          <input id="add-gear" type="number" value="0" min="0" class="highlight">
+        </div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            巅峰盘 [+]伤害 %
+            <small>巅峰盘上的 [+]伤害节点总和</small>
+          </label>
+          <input id="add-paragon" type="number" value="0" min="0" class="highlight">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- MIDDLE PANEL - 特殊机制 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="panel panel-middle">
+    <div class="panel-header">🔥 特殊机制</div>
+    <div class="panel-body">
+
+      <!-- 暴击 -->
+      <div class="section">
+        <div class="section-title">💥 暴击系统</div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            暴击伤害 基础 [×]%
+            <small>固定值 50%，不可修改</small>
+          </label>
+          <div class="input-lock-group">
+            <input type="number" value="50" disabled style="background: #444; cursor: not-allowed;">
+            <button class="lock-btn" title="固定值已锁定">
+              <svg viewBox="0 0 330 330"><path d="M65,330h200c8.284,0,15-6.716,15-15V145c0-8.284-6.716-15-15-15h-15V85c0-46.869-38.131-85-85-85S80,38.131,80,85v45H65c-8.284,0-15,6.716-15,15v170C50,323.284,56.716,330,65,330z M180,234.986V255c0,8.284-6.716,15-15,15s-15-6.716-15-15v-20.014c-6.068-4.565-10-11.824-10-19.986c0-13.785,11.215-25,25-25s25,11.215,25,25C190,223.162,186.068,230.421,180,234.986z M110,85c0-30.327,24.673-55,55-55s55,24.673,55,55v45H110V85z"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            暴击伤害 附加 [+]%
+            <small>装备词缀的暴击伤害，归入A伤区</small>
+          </label>
+          <input id="crit-dmg-add" type="number" value="0" min="0" class="highlight">
+        </div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            暴击率 %
+            <small>从角色面板查看</small>
+          </label>
+          <input id="crit-chance" type="number" value="50" min="0" max="100" class="highlight">
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-wrap">
+            <input id="crit-active" type="checkbox" checked>
+            <label>此次命中触发暴击（单次计算）</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 易伤 -->
+      <div class="section">
+        <div class="section-title">🔴 易伤系统</div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            易伤基础乘数 [×]%
+            <small>固定值 20% (×1.2)，不可修改</small>
+          </label>
+          <div class="input-lock-group">
+            <input type="number" value="20" disabled style="background: #444; cursor: not-allowed;">
+            <button class="lock-btn" title="固定值已锁定">
+              <svg viewBox="0 0 330 330"><path d="M65,330h200c8.284,0,15-6.716,15-15V145c0-8.284-6.716-15-15-15h-15V85c0-46.869-38.131-85-85-85S80,38.131,80,85v45H65c-8.284,0-15,6.716-15,15v170C50,323.284,56.716,330,65,330z M180,234.986V255c0,8.284-6.716,15-15,15s-15-6.716-15-15v-20.014c-6.068-4.565-10-11.824-10-19.986c0-13.785,11.215-25,25-25s25,11.215,25,25C190,223.162,186.068,230.421,180,234.986z M110,85c0-30.327,24.673-55,55-55s55,24.673,55,55v45H110V85z"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            易伤伤害 附加 [+]%
+            <small>装备词缀的易伤伤害，归入A伤区</small>
+          </label>
+          <input id="vuln-add" type="number" value="0" min="0" class="highlight">
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-wrap">
+            <input id="vuln-active" type="checkbox" checked>
+            <label>目标携带易伤状态</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            易伤覆盖率（DPS用）%
+            <small>用于计算平均DPS</small>
+          </label>
+          <input id="vuln-uptime" type="number" value="80" min="0" max="100" class="highlight">
+        </div>
+      </div>
+
+      <!-- 压制 -->
+      <div class="section">
+        <div class="section-title">⚡ 压制系统 (S13新机制)</div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            每层压制伤害 [+]%
+            <small>每层叠加的伤害加成，归入A伤区</small>
+          </label>
+          <input id="overpower-add" type="number" value="15" min="0" class="highlight">
+        </div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            当前压制层数
+            <small>当前激活的压制叠层数量</small>
+          </label>
+          <input id="overpower-stacks" type="number" value="0" min="0" class="highlight">
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-wrap">
+            <input id="overpower-active" type="checkbox">
+            <label>此次命中触发压制</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- X伤区 -->
+      <div class="section">
+        <div class="section-title">✖ X伤乘区 - 传奇/套装 [×]%</div>
+        <div id="legendary-container"></div>
+        <button class="add-modifier-btn" onclick="addModifier('legendary')">+ 添加词缀</button>
+      </div>
+
+      <div class="section">
+        <div class="section-title">✖ X伤乘区 - 装备/宝石（聚合）[×]%</div>
+        <div id="gems-container"></div>
+        <button class="add-modifier-btn" onclick="addModifier('gems')">+ 添加词缀</button>
+      </div>
+
+      <!-- 怪物减伤 -->
+      <div class="section">
+        <div class="section-title">🛡 怪物减伤</div>
+
+        <div class="form-group">
+          <label class="emphasize">
+            怪物伤害减免 %
+            <small>70级约80%，可自定义</small>
+          </label>
+          <input id="monster-dr" type="number" value="80" min="0" max="99" class="highlight">
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-wrap">
+            <input id="apply-dr" type="checkbox">
+            <label>计入怪物减伤（显示实际命中伤害）</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- RIGHT PANEL - 计算结果 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="panel panel-right">
+    <div class="panel-header">📊 计算结果</div>
+    <div class="panel-body">
+
+      <!-- 计算按钮 -->
+      <div style="margin-bottom: 20px;">
+        <button class="btn btn-block" onclick="calculate()">🔥 计算伤害</button>
+        <div class="btn-group" style="margin-top: 12px;">
+          <button class="btn btn-sm" style="flex: 1;" onclick="resetForm()">重置</button>
+          <button class="btn btn-sm" style="flex: 1;" onclick="saveConfig()">保存</button>
+          <button class="btn btn-sm" style="flex: 1;" onclick="loadConfig()">加载</button>
+        </div>
+      </div>
+
+      <!-- 结果显示区 -->
+      <div id="result-area">
+        <div class="result-empty">
+          <div class="result-empty-icon">⚔️</div>
+          <div class="result-empty-text">
+            填写左侧基础属性<br>
+            点击上方按钮计算伤害
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════
+// 职业数据配置
+// ════════════════════════════════════════════════════════
+const CLASS_CONFIG = {
+  'Barbarian': {
+    name: '野蛮人',
+    mainStat: '力量 (Strength)',
+    mainStatScaling: 9.0909,  // 1000/110
+    color: '#c41e3a'
+  },
+  'Druid': {
+    name: '德鲁伊',
+    mainStat: '意志 (Willpower)',
+    mainStatScaling: 8,  // 1000/125
+    color: '#ff7d0a'
+  },
+  'Necro': {
+    name: '死灵法师',
+    mainStat: '智力 (Intelligence)',
+    mainStatScaling: 8,
+    color: '#00ff96'
+  },
+  'Rogue': {
+    name: '游侠',
+    mainStat: '敏捷 (Dexterity)',
+    mainStatScaling: 8,
+    color: '#fff569'
+  },
+  'Sorc': {
+    name: '法师',
+    mainStat: '智力 (Intelligence)',
+    mainStatScaling: 8,
+    color: '#3fc7eb'
+  },
+  'Spiritborn': {
+    name: '灵族',
+    mainStat: '意志/敏捷/力量/智力',
+    mainStatScaling: 8,
+    color: '#a330c9'
+  }
+};
+
+// ════════════════════════════════════════════════════════
+// 动态词缀管理
+// ════════════════════════════════════════════════════════
+let modifiers = {
+  legendary: [],
+  gems: []
+};
+
+function addModifier(type) {
+  modifiers[type].push({ name: '', value: 0 });
+  renderModifiers(type);
+}
+
+function removeModifier(type, index) {
+  modifiers[type].splice(index, 1);
+  renderModifiers(type);
+}
+
+function renderModifiers(type) {
+  const container = document.getElementById(`${type}-container`);
+  container.innerHTML = '';
+
+  modifiers[type].forEach((mod, i) => {
+    const row = document.createElement('div');
+    row.className = 'modifier-row';
+    row.innerHTML = `
+      <input type="text" placeholder="词缀名称" value="${mod.name}"
+        oninput="modifiers['${type}'][${i}].name = this.value">
+      <input type="number" value="${mod.value}" min="0" step="1"
+        oninput="modifiers['${type}'][${i}].value = parseFloat(this.value) || 0">
+      <button onclick="removeModifier('${type}', ${i})">×</button>
+    `;
+    container.appendChild(row);
+  });
+}
+
+// ════════════════════════════════════════════════════════
+// 职业相关功能
+// ════════════════════════════════════════════════════════
+function updateClassInfo() {
+  const charClass = document.getElementById('char-class').value;
+  const config = CLASS_CONFIG[charClass];
+
+  if (config) {
+    document.getElementById('main-stat-label').textContent = config.mainStat;
+    document.getElementById('main-stat-info').textContent =
+      `${config.name} 系数: 1 + ${config.mainStat} / ${config.mainStatScaling.toFixed(2)}`;
+    updateMainStatBonus();
+  } else {
+    document.getElementById('main-stat-label').textContent = '主属性';
+    document.getElementById('main-stat-info').textContent = '请先选择职业';
+    document.getElementById('main-stat-bonus').value = 0;
+  }
+}
+
+function updateMainStatBonus() {
+  const charClass = document.getElementById('char-class').value;
+  const config = CLASS_CONFIG[charClass];
+
+  if (!config) {
+    document.getElementById('main-stat-bonus').value = 0;
+    return;
+  }
+
+  const mainStat = parseFloat(document.getElementById('main-stat').value) || 0;
+  const bonus = (mainStat / config.mainStatScaling).toFixed(1);
+  document.getElementById('main-stat-bonus').value = bonus;
+}
+
+function toggleDotOptions() {
+  const isDot = document.getElementById('is-dot').checked;
+  // DoT不可暴击，自动禁用暴击选项
+  if (isDot) {
+    document.getElementById('crit-active').checked = false;
+    document.getElementById('overpower-active').checked = false;
+  }
+}
+
+// ════════════════════════════════════════════════════════
+// 工具函数
+// ════════════════════════════════════════════════════════
+function val(id) {
+  return parseFloat(document.getElementById(id)?.value) || 0;
+}
+
+function checked(id) {
+  return document.getElementById(id)?.checked || false;
+}
+
+function fmtNum(n) {
+  if (n >= 1e9) return (n / 1e9).toFixed(2) + ' 亿';
+  if (n >= 1e6) return (n / 1e6).toFixed(2) + 'M';
+  if (n >= 1e3) return (n / 1e3).toFixed(1) + 'K';
+  return Math.round(n).toLocaleString('zh-CN');
+}
+
+// ════════════════════════════════════════════════════════
+// S13 伤害计算核心（修正版）
+// ════════════════════════════════════════════════════════
+function calculate() {
+  const charClass = document.getElementById('char-class').value;
+  if (!charClass) {
+    alert('请先选择职业！');
+    return;
+  }
+
+  const config = CLASS_CONFIG[charClass];
+
+  // ① 武器基础伤害
+  const wpn1 = val('wpn1');
+  const wpn2 = val('wpn2');
+  const wpnBase = wpn1 + wpn2;
+
+  if (wpnBase <= 0) {
+    alert('请填入武器伤害！');
+    return;
+  }
+
+  const wpnAdd = val('wpn-add');
+  const wpnAfterAdd = wpnBase * (1 + wpnAdd / 100);
+
+  // ② 技能倍率
+  const skillPct = val('skill-pct');
+  const afterSkill = wpnAfterAdd * (skillPct / 100);
+
+  // ③ 主属性加成（修正：使用正确的职业系数）
+  const mainStat = val('main-stat');
+  const mainStatBonus = mainStat / config.mainStatScaling;  // 百分比形式
+  const statMult = 1 + mainStatBonus / 100;
+  const afterStat = afterSkill * statMult;
+
+  // ④ A伤区 [+]% - S13修正：压制和暴击伤害归入此区
+  const isDot = checked('is-dot');
+  const vulnActive = checked('vuln-active');
+  const overpowerActive = checked('overpower-active');
+
+  let addTotal = val('add-gear') + val('add-paragon');
+
+  // 易伤伤害 [+]%（如果目标易伤）
+  if (vulnActive) {
+    addTotal += val('vuln-add');
+  }
+
+  // 暴击伤害 [+]%（归入A伤区）
+  if (!isDot) {
+    addTotal += val('crit-dmg-add');
+  }
+
+  // 压制伤害 [+]%（S13: 归入A伤区，叠层计算）
+  if (overpowerActive && !isDot) {
+    const overpowerPerStack = val('overpower-add');
+    const overpowerStacks = val('overpower-stacks');
+    addTotal += overpowerPerStack * overpowerStacks;
+  }
+
+  const addMult = 1 + addTotal / 100;
+  const afterAdd = afterStat * addMult;
+
+  // ⑤ 暴击区（基础50%）
+  const critDmgBase = 0.50;  // 固定基础
+  let normalHit = afterAdd;
+  let critHit = afterAdd * (1 + critDmgBase);
+  let afterCrit = (checked('crit-active') && !isDot) ? critHit : normalHit;
+
+  // ⑥ 易伤区 ×1.2
+  const vulnMult = vulnActive ? 1.2 : 1.0;
+  const afterVuln = afterCrit * vulnMult;
+
+  // ⑦ X伤乘区 - 传奇独立相乘（Bucket C1）
+  let legendaryMult = 1;
+  modifiers.legendary.forEach(m => {
+    if (m.value > 0) legendaryMult *= (1 + m.value / 100);
+  });
+  const afterLeg = afterVuln * legendaryMult;
+
+  // ⑧ X伤乘区 - 宝石聚合相乘（Bucket C2）
+  let gemsMult = 1;
+  modifiers.gems.forEach(m => {
+    if (m.value > 0) gemsMult *= (1 + m.value / 100);
+  });
+  const afterGems = afterLeg * gemsMult;
+
+  let finalHit = afterGems;
+
+  // ⑨ 怪物减伤
+  const applyDr = checked('apply-dr');
+  const monsterDr = val('monster-dr');
+  let finalDisplay = finalHit;
+  if (applyDr) finalDisplay = finalHit * (1 - monsterDr / 100);
+
+  // ════════════════════════════════════════════════════════
+  // 显示结果
+  // ════════════════════════════════════════════════════════
+  const isCrit = checked('crit-active') && !isDot;
+  const isOverpower = overpowerActive && !isDot;
+
+  // 主结果
+  let labelText = isDot ? 'DoT 基础伤害' : '单次命中伤害';
+  if (isCrit) labelText += ' (暴击)';
+  if (isOverpower) labelText += ' [压制]';
+
+  let subText = '';
+  if (!isDot) {
+    subText = `普通: ${fmtNum(normalHit * vulnMult * legendaryMult * gemsMult)} · 暴击: ${fmtNum(critHit * vulnMult * legendaryMult * gemsMult)}`;
+  } else {
+    subText = 'DoT 不触发暴击和压制';
+  }
+
+  // 计算步骤
+  const steps = [
+    { label: '武器点伤', mult: `${wpn1}${wpn2 > 0 ? '+' + wpn2 : ''}`, value: wpnBase },
+    { label: `附加武器伤害 [+]${wpnAdd}%`, mult: `×${(1 + wpnAdd / 100).toFixed(4)}`, value: wpnAfterAdd },
+    { label: `技能倍率 ${skillPct}%`, mult: `×${(skillPct / 100).toFixed(2)}`, value: afterSkill },
+    { label: `主属区 (${config.mainStat} ${mainStat})`, mult: `×${statMult.toFixed(4)}`, value: afterStat },
+    { label: `A伤区 [+]${addTotal.toFixed(0)}%`, mult: `×${addMult.toFixed(4)}`, value: afterAdd, highlight: true }
+  ];
+
+  if (!isDot) {
+    steps.push({
+      label: isCrit ? `暴击 (基础50%)` : '普通命中',
+      mult: isCrit ? `×${(1 + critDmgBase).toFixed(3)}` : '—',
+      value: afterCrit
+    });
+  }
+
+  steps.push({
+    label: vulnActive ? '易伤区 ×1.2' : '易伤区（无）',
+    mult: vulnActive ? '×1.200' : '×1.000',
+    value: afterVuln
+  });
+
+  if (legendaryMult > 1) {
+    const legNames = modifiers.legendary.filter(m => m.value > 0).map(m => m.name || `[×]${m.value}%`).join(' · ');
+    steps.push({
+      label: `传奇X乘区 ×${legendaryMult.toFixed(4)}`,
+      mult: legNames,
+      value: afterLeg
+    });
+  }
+
+  if (gemsMult > 1) {
+    const gemNames = modifiers.gems.filter(m => m.value > 0).map(m => m.name || `[×]${m.value}%`).join(' · ');
+    steps.push({
+      label: `宝石X乘区 ×${gemsMult.toFixed(4)}`,
+      mult: gemNames,
+      value: afterGems
+    });
+  }
+
+  steps.push({
+    label: `最终伤害 (总乘 ×${(finalHit / wpnBase).toFixed(1)})`,
+    mult: '',
+    value: finalHit,
+    highlight: true
+  });
+
+  if (applyDr) {
+    steps.push({
+      label: `扣除怪物减伤 ${monsterDr}%`,
+      mult: `×${(1 - monsterDr / 100).toFixed(3)}`,
+      value: finalDisplay
+    });
+  }
+
+  displayResults(labelText, finalDisplay, subText, steps);
+
+  // 计算DPS
+  calculateDPS(afterAdd, critDmgBase, vulnMult, legendaryMult, gemsMult, isDot);
+}
+
+// ════════════════════════════════════════════════════════
+// 结果显示
+// ════════════════════════════════════════════════════════
+function displayResults(label, value, subText, steps) {
+  const area = document.getElementById('result-area');
+
+  const stepsHtml = steps.map(s => `
+    <div class="result-step${s.highlight ? ' highlight' : ''}">
+      <div class="step-label">${s.label}</div>
+      <div class="step-mult">${s.mult}</div>
+      <div class="step-value">${fmtNum(s.value)}</div>
+    </div>
+  `).join('');
+
+  area.innerHTML = `
+    <div class="result-hero">
+      <div class="result-label">${label}</div>
+      <div class="result-value">${fmtNum(value)}</div>
+      <div class="result-sub">${subText}</div>
+    </div>
+    <div class="result-breakdown">${stepsHtml}</div>
+    <div class="dps-grid" id="dps-grid"></div>
+  `;
+}
+
+// ════════════════════════════════════════════════════════
+// DPS 计算
+// ════════════════════════════════════════════════════════
+function calculateDPS(afterAdd, critDmgBase, vulnMult, legendaryMult, gemsMult, isDot) {
+  const aps = val('aps');
+  const hits = val('hits');
+  const hps = aps * hits;
+
+  const critChance = Math.min(val('crit-chance'), 100) / 100;
+  const critFactor = 1 + critDmgBase;
+  const critExp = !isDot ? ((1 - critChance) + critChance * critFactor) : 1;
+
+  const vulnUptime = val('vuln-uptime') / 100;
+  const vulnActive = checked('vuln-active');
+
+  const baseNoVuln = afterAdd * critExp * legendaryMult * gemsMult;
+  const baseWithVuln = baseNoVuln * 1.2;
+
+  const avgHit = vulnActive ?
+    (baseWithVuln * vulnUptime + baseNoVuln * (1 - vulnUptime)) :
+    baseNoVuln;
+
+  const dps = avgHit * hps;
+  const dpsNoVuln = baseNoVuln * hps;
+  const dpsFullVuln = baseWithVuln * hps;
+
+  const grid = document.getElementById('dps-grid');
+  if (!grid) return;
+
+  grid.innerHTML = `
+    <div class="dps-stat">
+      <div class="dps-key">平均 DPS</div>
+      <div class="dps-val">${fmtNum(dps)}</div>
+      <div class="dps-sub">易伤覆盖 ${val('vuln-uptime')}%</div>
+    </div>
+    <div class="dps-stat">
+      <div class="dps-key">命中/秒</div>
+      <div class="dps-val">${hps.toFixed(2)}</div>
+      <div class="dps-sub">APS × ${hits}次</div>
+    </div>
+    <div class="dps-stat">
+      <div class="dps-key">暴击期望</div>
+      <div class="dps-val">${critExp.toFixed(3)}</div>
+      <div class="dps-sub">CC${val('crit-chance')}% CD${(critFactor * 100).toFixed(0)}%</div>
+    </div>
+    <div class="dps-stat">
+      <div class="dps-key">无易伤 DPS</div>
+      <div class="dps-val">${fmtNum(dpsNoVuln)}</div>
+      <div class="dps-sub">目标无易伤</div>
+    </div>
+    <div class="dps-stat">
+      <div class="dps-key">满易伤 DPS</div>
+      <div class="dps-val">${fmtNum(dpsFullVuln)}</div>
+      <div class="dps-sub">全程易伤</div>
+    </div>
+  `;
+}
+
+// ════════════════════════════════════════════════════════
+// 配置保存/加载/重置
+// ════════════════════════════════════════════════════════
+function saveConfig() {
+  const config = {
+    version: '1.0.0',
+    season: 13,
+    charClass: document.getElementById('char-class').value,
+    wpn1: val('wpn1'),
+    wpn2: val('wpn2'),
+    wpnAdd: val('wpn-add'),
+    aps: val('aps'),
+    mainStat: val('main-stat'),
+    skillPct: val('skill-pct'),
+    isDot: checked('is-dot'),
+    hits: val('hits'),
+    addGear: val('add-gear'),
+    addParagon: val('add-paragon'),
+    critDmgAdd: val('crit-dmg-add'),
+    critChance: val('crit-chance'),
+    critActive: checked('crit-active'),
+    vulnAdd: val('vuln-add'),
+    vulnActive: checked('vuln-active'),
+    vulnUptime: val('vuln-uptime'),
+    overpowerAdd: val('overpower-add'),
+    overpowerStacks: val('overpower-stacks'),
+    overpowerActive: checked('overpower-active'),
+    monsterDr: val('monster-dr'),
+    applyDr: checked('apply-dr'),
+    modifiers: modifiers
+  };
+
+  const json = JSON.stringify(config, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `d4_s13_${config.charClass || 'config'}_${Date.now()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function loadConfig() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const c = JSON.parse(event.target.result);
+
+        document.getElementById('char-class').value = c.charClass || '';
+        document.getElementById('wpn1').value = c.wpn1 || 3000;
+        document.getElementById('wpn2').value = c.wpn2 || 0;
+        document.getElementById('wpn-add').value = c.wpnAdd || 0;
+        document.getElementById('aps').value = c.aps || 1.2;
+        document.getElementById('main-stat').value = c.mainStat || 5000;
+        document.getElementById('skill-pct').value = c.skillPct || 215;
+        document.getElementById('is-dot').checked = c.isDot || false;
+        document.getElementById('hits').value = c.hits || 1;
+        document.getElementById('add-gear').value = c.addGear || 0;
+        document.getElementById('add-paragon').value = c.addParagon || 0;
+        document.getElementById('crit-dmg-add').value = c.critDmgAdd || 0;
+        document.getElementById('crit-chance').value = c.critChance || 50;
+        document.getElementById('crit-active').checked = c.critActive !== false;
+        document.getElementById('vuln-add').value = c.vulnAdd || 0;
+        document.getElementById('vuln-active').checked = c.vulnActive !== false;
+        document.getElementById('vuln-uptime').value = c.vulnUptime || 80;
+        document.getElementById('overpower-add').value = c.overpowerAdd || 15;
+        document.getElementById('overpower-stacks').value = c.overpowerStacks || 0;
+        document.getElementById('overpower-active').checked = c.overpowerActive || false;
+        document.getElementById('monster-dr').value = c.monsterDr || 80;
+        document.getElementById('apply-dr').checked = c.applyDr || false;
+
+        modifiers = c.modifiers || { legendary: [], gems: [] };
+        renderModifiers('legendary');
+        renderModifiers('gems');
+        updateClassInfo();
+
+        alert('配置已加载！');
+      } catch (err) {
+        alert('配置文件格式错误！');
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+function resetForm() {
+  if (!confirm('确定要重置所有数据吗？')) return;
+
+  document.getElementById('char-class').value = '';
+  document.getElementById('wpn1').value = 3000;
+  document.getElementById('wpn2').value = 0;
+  document.getElementById('wpn-add').value = 0;
+  document.getElementById('aps').value = 1.2;
+  document.getElementById('main-stat').value = 5000;
+  document.getElementById('skill-pct').value = 215;
+  document.getElementById('is-dot').checked = false;
+  document.getElementById('hits').value = 1;
+  document.getElementById('add-gear').value = 0;
+  document.getElementById('add-paragon').value = 0;
+  document.getElementById('crit-dmg-add').value = 0;
+  document.getElementById('crit-chance').value = 50;
+  document.getElementById('crit-active').checked = true;
+  document.getElementById('vuln-add').value = 0;
+  document.getElementById('vuln-active').checked = true;
+  document.getElementById('vuln-uptime').value = 80;
+  document.getElementById('overpower-add').value = 15;
+  document.getElementById('overpower-stacks').value = 0;
+  document.getElementById('overpower-active').checked = false;
+  document.getElementById('monster-dr').value = 80;
+  document.getElementById('apply-dr').checked = false;
+
+  modifiers = { legendary: [], gems: [] };
+  renderModifiers('legendary');
+  renderModifiers('gems');
+  updateClassInfo();
+
+  document.getElementById('result-area').innerHTML = `
+    <div class="result-empty">
+      <div class="result-empty-icon">⚔️</div>
+      <div class="result-empty-text">
+        填写左侧基础属性<br>
+        点击上方按钮计算伤害
+      </div>
+    </div>
+  `;
+}
+
+// ════════════════════════════════════════════════════════
+// 初始化
+// ════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  renderModifiers('legendary');
+  renderModifiers('gems');
+});
+</script>
+</body>
+</html>

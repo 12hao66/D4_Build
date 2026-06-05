@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>暗黑4 · 野蛮人伤害模拟器 S13 v7</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --ink-0: #0d0d0f; --ink-1: #141418; --ink-2: #1c1c22; --ink-3: #242430;
+  --fire-1: #ffd060; --fire-2: #e8a020; --fire-3: #b06010; --fire-4: #603008;
+  --emerald: #00d68f; --crimson: #ff4d4f; --sapphire: #4096ff; --amber: #ff9800;
+  --text-primary: #f0ead8; --text-secondary: #b0a080; --text-muted: #6a6050;
+  --border-strong: rgba(224,160,32,.55); --border-mid: rgba(180,120,20,.30);
+  --border-soft: rgba(140,90,15,.18); --border-faint: rgba(100,70,10,.12);
+  --radius-sm: 3px; --radius-md: 6px; --radius-lg: 8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: 'Rajdhani', sans-serif; font-size: 14px; background: var(--ink-0); color: var(--text-primary); overflow: hidden; }
+.app { position: relative; z-index: 1; display: flex; flex-direction: column; height: 100vh; }
+
+/* Topbar */
+.topbar { flex-shrink: 0; display: flex; align-items: center; gap: 18px; height: 54px; padding: 0 22px; background: rgba(10,10,14,.97); border-bottom: 1px solid var(--border-strong); }
+.logo { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 900; background: linear-gradient(135deg, #fff0c0 0%, var(--fire-1) 40%, var(--fire-2) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.s-badge { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--fire-2); padding: 3px 10px; border: 1px solid var(--border-mid); background: rgba(180,96,16,.12); }
+.topbar-tabs { display: flex; gap: 2px; margin-left: auto; }
+.ttab { background: transparent; border: 1px solid transparent; color: var(--text-muted); font-family: 'Cinzel', serif; font-size: 11px; font-weight: 600; padding: 7px 18px; cursor: pointer; border-radius: var(--radius-sm); }
+.ttab:hover { color: var(--text-secondary); background: rgba(255,255,255,.04); }
+.ttab.active { color: var(--fire-1); background: rgba(224,160,32,.1); border-color: var(--border-mid); }
+
+/* Plan Bar */
+.plan-bar { flex-shrink: 0; display: flex; align-items: center; gap: 6px; height: 42px; padding: 0 18px; background: var(--ink-1); border-bottom: 1px solid var(--border-soft); }
+.plan-tabs { display: flex; gap: 5px; flex: 1; overflow-x: auto; }
+.ptab { display: flex; align-items: center; gap: 6px; background: var(--ink-3); border: 1px solid var(--border-soft); border-radius: var(--radius-sm); padding: 5px 12px; cursor: pointer; font-size: 12px; white-space: nowrap; }
+.ptab.active { background: rgba(224,160,32,.14); border-color: var(--border-strong); color: var(--fire-1); }
+.ptab-name { font-family: 'Cinzel', serif; font-size: 11px; font-weight: 600; max-width: 110px; overflow: hidden; text-overflow: ellipsis; }
+.ptab-x { background: none; border: none; color: var(--text-muted); font-size: 14px; cursor: pointer; padding: 0 3px; }
+.ptab-x:hover { color: var(--crimson); }
+.pb { background: rgba(224,160,32,.08); border: 1px solid var(--border-mid); color: var(--text-secondary); font-size: 12px; padding: 5px 14px; border-radius: var(--radius-sm); cursor: pointer; }
+.pb:hover { border-color: var(--border-strong); color: var(--fire-1); background: rgba(224,160,32,.15); }
+
+/* Columns */
+.cols { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1.35fr; overflow: hidden; }
+.col { overflow-y: auto; border-right: 1px solid var(--border-soft); background: var(--ink-1); }
+.col:last-child { border-right: none; background: var(--ink-0); }
+.col::-webkit-scrollbar { width: 5px; }
+.col::-webkit-scrollbar-thumb { background: var(--fire-4); border-radius: 3px; }
+
+/* Section Header */
+.sh { font-family: 'Cinzel', serif; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; color: var(--fire-2); padding: 12px 16px 10px; border-bottom: 1px solid var(--border-soft); background: linear-gradient(180deg, rgba(20,20,26,.98) 0%, rgba(16,16,20,.95) 100%); display: flex; align-items: center; position: sticky; top: 0; z-index: 20; }
+.sh-badge { font-size: 10px; padding: 2px 8px; border-radius: 12px; background: rgba(224,160,32,.12); border: 1px solid var(--border-mid); color: var(--fire-2); margin-left: auto; }
+
+/* Forms */
+.fblock { padding: 6px 16px 10px; }
+.frow { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border-faint); }
+.flabel { flex: 1; font-size: 13px; font-weight: 500; color: var(--text-primary); }
+.flabel small { display: block; font-size: 11px; color: var(--text-muted); }
+.ftag { font-family: 'Share Tech Mono', monospace; font-size: 10px; padding: 2px 7px; border-radius: 3px; border: 1px solid; white-space: nowrap; }
+.tag-add { border-color: rgba(64,150,255,.5); color: #70b8ff; background: rgba(64,150,255,.1); }
+.tag-x { border-color: rgba(232,160,32,.55); color: var(--fire-1); background: rgba(232,160,32,.1); }
+.tag-crit { border-color: rgba(255,208,64,.5); color: var(--fire-1); background: rgba(255,208,64,.1); }
+.tag-vuln { border-color: rgba(255,80,80,.5); color: #ff8070; background: rgba(255,80,80,.1); }
+.tag-base { border-color: rgba(0,214,143,.5); color: var(--emerald); background: rgba(0,214,143,.1); }
+.ni { background: var(--ink-0); border: 1.5px solid var(--border-mid); color: var(--text-primary); font-family: 'Share Tech Mono', monospace; font-size: 14px; padding: 6px 10px; border-radius: var(--radius-sm); outline: none; width: 92px; text-align: right; }
+.ni:focus { border-color: var(--fire-2); box-shadow: 0 0 0 3px rgba(224,160,32,.15); }
+.ni.w { width: 110px; }
+.cbrow { display: flex; align-items: center; gap: 9px; padding: 8px 0; cursor: pointer; font-size: 13px; font-weight: 500; }
+.cbrow input { width: 16px; height: 16px; accent-color: var(--fire-2); }
+
+/* Dynamic Rows */
+.xsec { padding: 8px 16px 4px; }
+.xrow { display: grid; grid-template-columns: 1fr 88px 28px; gap: 6px; align-items: center; margin-bottom: 6px; }
+.xname { background: var(--ink-0); border: 1.5px solid var(--border-mid); color: var(--text-primary); font-family: 'Rajdhani', sans-serif; font-size: 13px; padding: 6px 10px; border-radius: var(--radius-sm); outline: none; }
+.xname:focus { border-color: var(--fire-2); }
+.xdel { background: transparent; border: 1.5px solid var(--border-soft); color: var(--text-muted); font-size: 14px; cursor: pointer; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); }
+.xdel:hover { border-color: var(--crimson); color: var(--crimson); }
+.btn-add-x { width: 100%; padding: 7px 12px; margin: 4px 0 10px; background: transparent; border: 1.5px dashed var(--border-mid); color: var(--text-secondary); font-size: 12px; cursor: pointer; border-radius: var(--radius-sm); }
+.btn-add-x:hover { border-color: var(--border-strong); color: var(--fire-1); background: rgba(224,160,32,.08); }
+
+/* BD Cards */
+.bd-list { padding: 10px 14px; display: flex; flex-direction: column; gap: 8px; }
+.bd-card { background: var(--ink-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); overflow: hidden; }
+.bd-card:hover { border-color: var(--border-mid); }
+.bd-card.selected { border-color: var(--border-strong); background: rgba(224,160,32,.05); }
+.bd-head { display: flex; align-items: center; gap: 12px; padding: 12px 14px; cursor: pointer; }
+.bd-icon { font-size: 22px; }
+.bd-info { flex: 1; }
+.bd-name { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 700; color: var(--text-primary); }
+.bd-meta { font-size: 12px; color: var(--text-muted); }
+.bd-tier { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 20px; background: rgba(224,160,32,.15); border: 1px solid var(--border-mid); color: var(--fire-1); }
+.bd-body { display: none; border-top: 1px solid var(--border-soft); padding: 12px 14px; }
+.bd-card.open .bd-body { display: block; }
+.bd-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; margin-bottom: 12px; }
+.bd-stat { font-size: 13px; color: var(--text-secondary); }
+.bd-stat span { color: var(--fire-1); font-weight: 700; }
+.bd-actions { display: flex; gap: 8px; }
+.btn-bd { flex: 1; padding: 8px; background: var(--ink-3); border: 1px solid var(--border-soft); color: var(--text-secondary); font-size: 12px; font-weight: 600; cursor: pointer; border-radius: var(--radius-sm); text-align: center; }
+.btn-bd:hover { border-color: var(--border-mid); color: var(--fire-1); }
+.btn-bd.primary { background: linear-gradient(180deg, rgba(200,120,20,.35) 0%, rgba(140,76,8,.25) 100%); border-color: var(--fire-3); color: var(--fire-1); }
+
+/* Right Column */
+.rcol { display: flex; flex-direction: column; }
+.rtabs { display: flex; border-bottom: 1px solid var(--border-soft); background: var(--ink-2); }
+.rtab { background: transparent; border: none; border-bottom: 2px solid transparent; color: var(--text-secondary); font-family: 'Cinzel', serif; font-size: 12px; font-weight: 600; padding: 12px 20px; cursor: pointer; }
+.rtab:hover { color: var(--text-primary); }
+.rtab.active { color: var(--fire-1); border-bottom-color: var(--fire-2); }
+.rtab-panel { display: none; overflow-y: auto; padding: 18px 22px; }
+.rtab-panel.active { display: block; }
+
+.btn-calc { display: block; width: 100%; padding: 14px 20px; margin-bottom: 18px; background: linear-gradient(180deg, #c89028 0%, #7c4808 100%); border: 1.5px solid var(--fire-2); border-radius: var(--radius-md); color: #fff0c0; font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; cursor: pointer; }
+.btn-calc:hover { background: linear-gradient(180deg, #e0a830 0%, #904e08 100%); transform: translateY(-1px); }
+
+.r-hero { text-align: center; padding: 22px 18px 18px; border: 1px solid var(--border-mid); border-radius: var(--radius-lg); background: linear-gradient(180deg, rgba(180,100,0,.12) 0%, rgba(14,14,18,.8) 100%); margin-bottom: 18px; }
+.r-num { font-family: 'Cinzel', serif; font-weight: 900; font-size: clamp(38px, 4.5vw, 64px); background: linear-gradient(180deg, #fff0c0 0%, var(--fire-1) 45%, var(--fire-2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.r-sub { font-size: 12px; color: var(--text-secondary); margin-top: 8px; }
+
+.steps-toggle { display: flex; gap: 4px; margin-bottom: 14px; background: var(--ink-2); border: 1px solid var(--border-soft); border-radius: var(--radius-sm); padding: 3px; }
+.stoggle { flex: 1; background: transparent; border: 1px solid transparent; color: var(--text-muted); font-family: 'Cinzel', serif; font-size: 11px; font-weight: 600; padding: 7px; cursor: pointer; }
+.stoggle:hover { color: var(--text-secondary); }
+.stoggle.active { background: rgba(224,160,32,.16); color: var(--fire-1); border-color: var(--border-mid); }
+
+.steps-simple { background: var(--ink-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); overflow: hidden; }
+.step-s { display: flex; align-items: center; gap: 12px; padding: 9px 14px; border-bottom: 1px solid var(--border-faint); }
+.step-s.hl { background: rgba(224,160,32,.07); }
+.step-label { flex: 1; font-size: 13px; font-weight: 500; color: var(--text-primary); }
+.step-mult { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--fire-2); min-width: 68px; text-align: right; }
+.step-val { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; color: var(--fire-1); min-width: 88px; text-align: right; }
+.step-arrow { text-align: center; color: var(--border-mid); font-size: 12px; padding: 2px; }
+
+.step-d { background: var(--ink-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); margin-bottom: 6px; overflow: hidden; }
+.step-d-head { display: flex; align-items: center; gap: 12px; padding: 11px 14px; cursor: pointer; }
+.step-d-head:hover { background: rgba(255,255,255,.025); }
+.step-d-icon { font-size: 18px; flex-shrink: 0; }
+.step-d-name { flex: 1; font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.step-d-result { font-family: 'Cinzel', serif; font-size: 15px; font-weight: 700; color: var(--fire-1); }
+.step-d-body { display: none; border-top: 1px solid var(--border-faint); padding: 12px 16px; font-size: 13px; color: var(--text-secondary); background: rgba(0,0,0,.25); line-height: 1.8; }
+.step-d-body .formula { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--fire-1); background: var(--ink-0); padding: 8px 12px; border-radius: var(--radius-sm); margin: 6px 0; display: block; border-left: 3px solid var(--fire-3); }
+.step-d.open .step-d-body { display: block; }
+.step-d.final { border-color: var(--fire-3); background: rgba(224,160,32,.05); }
+.step-d.final .step-d-name { color: var(--fire-2); }
+
+.dps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 12px; }
+.dps-stat { background: var(--ink-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 14px 12px; text-align: center; }
+.dps-key { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; }
+.dps-val { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; color: var(--fire-1); }
+
+.cmp-title { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 2px; color: var(--fire-2); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-soft); }
+.cmp-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.cmp-side { background: var(--ink-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 14px 16px; }
+.cmp-side.mine { border-color: var(--fire-3); }
+.cmp-side.bd { border-color: rgba(64,150,255,.35); }
+.cmp-side-num { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 700; color: var(--fire-1); }
+.cmp-diff-bar { background: var(--ink-2); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 12px; text-align: center; }
+.cmp-diff-num { font-family: 'Cinzel', serif; font-size: 36px; font-weight: 900; }
+.cmp-diff-num.up { color: var(--emerald); }
+.cmp-diff-num.down { color: var(--crimson); }
+.cmp-row-list { display: flex; flex-direction: column; gap: 4px; }
+.cmp-row { display: grid; grid-template-columns: 1fr auto auto auto; gap: 12px; align-items: center; padding: 8px 14px; background: var(--ink-2); border: 1px solid var(--border-faint); border-radius: var(--radius-sm); font-size: 13px; }
+.cmp-rdiff.pos { color: var(--emerald); }
+.cmp-rdiff.neg { color: var(--crimson); }
+
+.full-compare { display: none; overflow-y: auto; padding: 28px 32px; background: var(--ink-0); }
+.guide-page { display: none; overflow-y: auto; padding: 28px 36px; max-width: 1000px; background: var(--ink-0); }
+.empty { text-align: center; padding: 40px 20px; color: var(--text-muted); }
+.toast { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--ink-3); border: 1px solid var(--fire-2); color: var(--fire-1); padding: 11px 22px; border-radius: var(--radius-md); opacity: 0; transition: all .3s; z-index: 9999; pointer-events: none; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<div class="app">
+<div class="topbar">
+  <div class="logo">D4 · BARBARIAN S13 v7</div>
+  <div class="s-badge">S13</div>
+  <div class="topbar-tabs">
+    <button class="ttab active" data-page="sim">⚔ 模拟器</button>
+    <button class="ttab" data-page="fullcompare">⚖ 方案对比</button>
+    <button class="ttab" data-page="guide">📖 公式说明</button>
+  </div>
+</div>
+<div class="plan-bar">
+  <div class="plan-tabs" id="plan-tabs"></div>
+  <div class="plan-btns">
+    <button class="pb" onclick="newPlan()">＋ 新建</button>
+    <button class="pb" onclick="clonePlan()">复制</button>
+    <button class="pb" onclick="exportPlan()">💾 导出</button>
+    <button class="pb" onclick="triggerImportFile()">📂 导入</button>
+    <input type="file" id="import-file-input" accept=".json" style="display:none" onchange="handleImportFile(this)">
+  </div>
+</div>
+<div class="cols" id="cols">
+  <!-- 左列 -->
+  <div class="col">
+    <div class="sh">👤 职业</div>
+    <div style="padding:10px 14px"><select id="f_class" onchange="save();updateClassLabel(this.value)" style="width:100%;background:var(--ink-1);border:1.5px solid var(--border-mid);color:var(--text-primary);font-family:'Cinzel',serif;padding:9px 12px;border-radius:6px;cursor:pointer"><option value="barbarian">⚔ 野蛮人</option><option value="druid">🌿 德鲁伊</option><option value="sorc">🔥 法师</option><option value="necro">💀 死灵法师</option><option value="rogue">🗡 游侠</option><option value="paladin">🛡 圣骑士</option><option value="spiritborn">🦅 术士</option></select></div>
+    <div class="sh">⚔ 武器 &amp; 基础</div>
+    <div class="fblock"><div class="frow"><div class="flabel">主手武器点伤（平均）<small>面板小字取中值</small></div><input class="ni w" type="number" id="f_wpn1" value="3000" oninput="save()"></div><div class="frow"><div class="flabel">副手武器点伤<small>双持填；单武器留0</small></div><input class="ni w" type="number" id="f_wpn2" value="0" oninput="save()"></div><div class="frow"><div class="flabel">附加武器伤害<small>武器固有[+]词缀</small></div><input class="ni" type="number" id="f_wpn_add" value="0" oninput="save()"><span class="ftag tag-add">[+]%</span></div><div class="frow"><div class="flabel">总攻击速度 APS<small>仅DPS计算使用</small></div><input class="ni" type="number" id="f_aps" value="1.2" step="0.01" oninput="save()"></div><div class="frow"><div class="flabel" id="stat-label">力量（主属性）<small id="stat-div-label">系数：1 + 力量/900</small></div><input class="ni w" type="number" id="f_str" value="5000" oninput="save()"><span class="ftag tag-base">主属</span></div></div>
+    <div class="sh">⚡ 技能</div>
+    <div class="fblock"><div class="frow"><div class="flabel">技能伤害倍率<small>从技能详情查看</small></div><input class="ni" type="number" id="f_skill_pct" value="215" oninput="save()"><span class="ftag tag-base">%</span></div><div class="frow"><div class="flabel">每次施法命中数<small>单次施法总命中次数</small></div><input class="ni" type="number" id="f_hits" value="1" step="0.5" oninput="save()"></div><div class="frow"><label class="cbrow"><input type="checkbox" id="f_is_dot" onchange="save()"><span>持续伤害（DoT）不可暴击/压制</span></label></div></div>
+    <div class="sh">📦 A类区 (加法桶) [+]%<div class="sh-badge">包含所有[+]%前缀、巅峰、易伤[+]%、暴击[+]%、压制叠层</div></div>
+    <div class="fblock"><div class="frow"><div class="flabel">装备 [+]伤害合计</div><input class="ni" type="number" id="f_add_gear" value="0" oninput="save()"><span class="ftag tag-add">[+]%</span></div><div class="frow"><div class="flabel">巅峰盘 [+]伤害</div><input class="ni" type="number" id="f_add_paragon" value="0" oninput="save()"><span class="ftag tag-add">[+]%</span></div></div>
+    <div class="sh">💥 暴击</div>
+    <div class="fblock"><div class="frow"><div class="flabel">暴击伤害 基础 [×]<small>固定</small></div><span>50%</span></div><div class="frow"><div class="flabel">暴击伤害 附加 [+]%<small>归入A类区</small></div><input class="ni" type="number" id="f_crit_dmg_add" value="0" oninput="save()"><span class="ftag tag-add">[+]%</span></div><div class="frow"><div class="flabel">暴击率 %</div><input class="ni" type="number" id="f_crit_chance" value="50" min="0" max="100" oninput="save()"><span class="ftag tag-crit">%</span></div><div class="frow"><label class="cbrow"><input type="checkbox" id="f_crit_active" onchange="save()" checked><span>此次命中触发暴击</span></label></div></div>
+    <div class="sh">🔴 易伤</div>
+    <div class="fblock"><div class="frow"><div class="flabel">易伤基础乘数 [×]<small>固定 ×1.2</small></div><span>20%</span></div><div class="frow"><div class="flabel">易伤伤害 [+]%<small>归入A类区</small></div><input class="ni" type="number" id="f_vuln_add" value="0" oninput="save()"><span class="ftag tag-add">[+]%</span></div><div class="frow"><label class="cbrow"><input type="checkbox" id="f_vuln_active" onchange="save()" checked><span>目标携带易伤</span></label></div><div class="frow"><div class="flabel">易伤覆盖率（DPS用）</div><input class="ni" type="number" id="f_vuln_uptime" value="80" min="0" max="100" oninput="save()"><span class="ftag tag-vuln">%</span></div></div>
+    <div class="sh">⚡ 压制（Overpower）S13</div>
+    <div class="fblock"><div class="frow"><div class="flabel">压制叠层 [+]%/层<small>归入A类区</small></div><input class="ni" type="number" id="f_op_stack_add" value="15" oninput="save()"><span class="ftag tag-add">[+]%</span></div><div class="frow"><div class="flabel">当前叠层数</div><input class="ni" type="number" id="f_op_stacks" value="0" oninput="save()"></div><div class="frow"><div class="flabel">当前生命值 %<small>满血×1.5</small></div><input class="ni" type="number" id="f_op_hp_pct" value="100" min="0" max="100" oninput="save()"><span class="ftag tag-base">%</span></div><div class="frow"><label class="cbrow"><input type="checkbox" id="f_op_active" onchange="save()"><span>此次命中触发压制</span></label></div></div>
+    <div class="sh">🛡 怪物减伤</div>
+    <div class="fblock"><div class="frow"><div class="flabel">怪物减伤 [×]%</div><input class="ni" type="number" id="f_monster_dr" value="80" min="0" max="99" oninput="save()"><span class="ftag tag-x">[×]%</span></div><div class="frow"><label class="cbrow"><input type="checkbox" id="f_apply_dr" onchange="save()"><span>计入怪物减伤</span></label></div></div>
+  </div>
+
+  <!-- 中列 -->
+  <div class="col">
+    <div class="sh">✨ B类区 (新! 独立加法桶) [×]%<div class="sh-badge">装备/宝石上的[×]%前缀词缀，同名相加</div></div>
+    <div class="xsec" id="xsec-b"></div><div style="padding:0 12px 8px"><button class="btn-add-x" onclick="addBMulti()">＋ 添加B类词缀 ([×]%前缀)</button></div>
+    <div class="sh">🏆 独立X乘区 (纯乘法) [×]%<div class="sh-badge">威能/套装/[×]%后缀词缀，各自独立相乘</div></div>
+    <div class="xsec" id="xsec-leg"></div><div style="padding:0 12px 8px"><button class="btn-add-x" onclick="addX()">＋ 添加独立X乘区</button></div>
+    <div class="sh">📊 天梯 Top BD 参考</div>
+    <div class="bd-list" id="bd-list"></div>
+    <div class="sh">📸 快照<div class="sh-badge">最多5个</div></div>
+    <div style="padding:4px 14px 8px"><button onclick="takeSnapshot()" style="width:100%;padding:8px;background:rgba(200,144,32,.2);border:1.5px solid var(--border-mid);color:var(--fire-1);font-family:'Cinzel',serif;font-weight:700;cursor:pointer;border-radius:6px">📸 保存快照</button></div>
+    <div style="padding:0 14px 12px" id="snap-list"></div>
+  </div>
+
+  <!-- 右列 -->
+  <div class="col rcol">
+    <div class="rtabs"><button class="rtab active" data-rtab="result">计算结果</button><button class="rtab" data-rtab="dps">DPS</button><button class="rtab" data-rtab="bdcmp">BD对比</button></div>
+    <div class="rtab-panel active" id="rtab-result">
+      <button class="btn-calc" onclick="calculate()">⚔ 计算最终伤害</button>
+      <div id="r-empty" class="empty"><div>⚔</div><div>填写左侧参数后点击计算</div></div>
+      <div id="r-content" style="display:none">
+        <div class="r-hero"><div class="r-mode" id="r-mode">单次施法总伤害</div><div class="r-num" id="r-num">—</div><div class="r-sub" id="r-sub">—</div></div>
+        <div class="steps-toggle"><button class="stoggle active" id="st-simple" onclick="switchSteps('simple')">简洁模式</button><button class="stoggle" id="st-detail" onclick="switchSteps('detail')">详细展开</button></div>
+        <div id="steps-simple" class="steps-simple"></div><div id="steps-detail" style="display:none"></div>
+      </div>
+    </div>
+    <div class="rtab-panel" id="rtab-dps"><div id="dps-empty" class="empty"><div>📊</div><div>请先计算伤害</div></div><div id="dps-content" style="display:none"><div class="r-hero"><div class="r-mode">平均 DPS</div><div class="r-num" id="dps-main">—</div><div class="r-sub" id="dps-sub">—</div></div><div class="dps-grid" id="dps-grid"></div></div></div>
+    <div class="rtab-panel" id="rtab-bdcmp"><div id="bdcmp-empty" class="empty"><div>⚖</div><div>先计算伤害，再从中间列选择 BD 点击「对比」</div></div><div id="bdcmp-content" style="display:none"></div></div>
+  </div>
+</div>
+<div class="full-compare" id="page-fullcompare"><div id="fc-full-content"></div></div>
+<div class="guide-page" id="page-guide"><div id="guide-content"></div></div>
+<div class="toast" id="toast"></div>
+</div>
+
+<script>
+// 内置BD数据
+const BUILTIN_BDS = [
+  { id:'ww_top', name:'旋风斩 顶配', skill:'旋风斩', tier:'T0', icon:'🌀', desc:'超高攻速',
+    data:{ wpn1:4800, wpn2:4500, wpn_add:20, aps:2.1, str:9500, skill_pct:215, is_dot:false, hits:3,
+      add_gear:320, add_paragon:80, crit_dmg_add:250, crit_chance:72, crit_active:true,
+      vuln_add:45, vuln_active:true, vuln_uptime:90, op_stack_add:20, op_stacks:3, op_active:false, op_hp_pct:100,
+      monster_dr:80, apply_dr:false, b_multis:[{name:'物理宝石',val:44}],
+      multi_leg:[{name:'旋风斩威能',val:60},{name:'血腥战意',val:40},{name:'巅峰X节点',val:25}] } },
+  { id:'rend_top', name:'撕裂 顶配', skill:'撕裂', tier:'T0', icon:'🩸', desc:'流血DoT',
+    data:{ wpn1:5200, wpn2:0, wpn_add:25, aps:1.0, str:8800, skill_pct:47, is_dot:true, hits:3,
+      add_gear:280, add_paragon:70, crit_dmg_add:0, crit_chance:50, crit_active:false,
+      vuln_add:40, vuln_active:true, vuln_uptime:85, op_stack_add:15, op_stacks:0, op_active:false, op_hp_pct:100,
+      monster_dr:80, apply_dr:false, b_multis:[{name:'暗影宝石',val:48}],
+      multi_leg:[{name:'撕裂威能',val:80},{name:'流血套装',val:50},{name:'巅峰X节点',val:20}] } },
+  { id:'hammer_top', name:'锤击 顶配', skill:'锤击', tier:'T1', icon:'🔨', desc:'单次爆发',
+    data:{ wpn1:6200, wpn2:0, wpn_add:30, aps:0.95, str:10200, skill_pct:160, is_dot:false, hits:1,
+      add_gear:350, add_paragon:90, crit_dmg_add:300, crit_chance:65, crit_active:true,
+      vuln_add:50, vuln_active:true, vuln_uptime:80, op_stack_add:25, op_stacks:5, op_active:true, op_hp_pct:100,
+      monster_dr:80, apply_dr:false, b_multis:[{name:'物理宝石',val:40}],
+      multi_leg:[{name:'锤击威能',val:70},{name:'压制套装',val:55},{name:'祖父之剑',val:150}] } }
+];
+
+// 全局状态
+const SKEY = 'd4_s13_v7';
+const SNAP_KEY = 'd4_s13_snaps_v7';
+const MAX_SNAPS = 5;
+const CLASSES = [
+  { id:'barbarian', name:'野蛮人', stat_label:'力量', stat_div:900 },
+  { id:'druid', name:'德鲁伊', stat_label:'意志', stat_div:800 },
+  { id:'sorc', name:'法师', stat_label:'智慧', stat_div:800 },
+  { id:'necro', name:'死灵法师', stat_label:'智慧', stat_div:800 },
+  { id:'rogue', name:'游侠', stat_label:'敏捷', stat_div:800 },
+  { id:'paladin', name:'圣骑士', stat_label:'力量', stat_div:900 },
+  { id:'spiritborn', name:'术士', stat_label:'敏捷', stat_div:800 }
+];
+let plans = [], activeId = null, lastCalcResult = null, lastCalcData = null, selectedBdId = null, stepsMode = 'simple';
+
+function defaultData(){
+  return { class_id:'barbarian', wpn1:3000, wpn2:0, wpn_add:0, aps:1.2, str:5000,
+    skill_pct:215, is_dot:false, hits:1, add_gear:0, add_paragon:0,
+    crit_dmg_add:0, crit_chance:50, crit_active:true,
+    vuln_add:0, vuln_active:true, vuln_uptime:80,
+    op_stacks:0, op_stack_add:15, op_active:false, op_hp_pct:100,
+    monster_dr:80, apply_dr:false, b_multis:[], multi_leg:[] };
+}
+function saveAll(){ try{ localStorage.setItem(SKEY,JSON.stringify({plans,activeId})); }catch(e){} }
+function loadAll(){
+  try{ const r=JSON.parse(localStorage.getItem(SKEY)||'{}'); plans=r.plans||[]; activeId=r.activeId||null; }catch(e){}
+  if(!plans.length){ const id='p'+Date.now(); plans=[{id,name:'方案 1',data:defaultData()}]; activeId=id; }
+  if(!plans.find(p=>p.id===activeId)) activeId=plans[0].id;
+}
+function activePlan(){ return plans.find(p=>p.id===activeId); }
+function activeData(){ return activePlan()?.data||defaultData(); }
+const g=id=>document.getElementById(id);
+const num=id=>parseFloat(g(id)?.value)||0;
+const chk=id=>g(id)?.checked||false;
+const set=(id,v)=>{ const e=g(id); if(e) e.value=v; };
+const setc=(id,v)=>{ const e=g(id); if(e) e.checked=!!v; };
+const fmt=n=>{ if(n>=1e9)return (n/1e9).toFixed(2)+'亿'; if(n>=1e6)return (n/1e6).toFixed(2)+'M'; if(n>=1e3)return (n/1e3).toFixed(1)+'K'; return Math.round(n).toLocaleString(); };
+function toast(msg){ const t=g('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600); }
+
+function save(){
+  const d=activePlan()?.data; if(!d) return;
+  d.class_id=g('f_class')?.value||'barbarian';
+  d.wpn1=num('f_wpn1'); d.wpn2=num('f_wpn2'); d.wpn_add=num('f_wpn_add');
+  d.aps=num('f_aps'); d.str=num('f_str');
+  d.skill_pct=num('f_skill_pct'); d.is_dot=chk('f_is_dot'); d.hits=num('f_hits');
+  d.add_gear=num('f_add_gear'); d.add_paragon=num('f_add_paragon');
+  d.crit_dmg_add=num('f_crit_dmg_add'); d.crit_chance=num('f_crit_chance'); d.crit_active=chk('f_crit_active');
+  d.vuln_add=num('f_vuln_add'); d.vuln_active=chk('f_vuln_active'); d.vuln_uptime=num('f_vuln_uptime');
+  d.op_stacks=num('f_op_stacks'); d.op_stack_add=num('f_op_stack_add'); d.op_active=chk('f_op_active'); d.op_hp_pct=num('f_op_hp_pct');
+  d.monster_dr=num('f_monster_dr'); d.apply_dr=chk('f_apply_dr');
+  saveAll();
+}
+
+function load(){
+  const d=activeData();
+  if(g('f_class')) g('f_class').value=d.class_id||'barbarian';
+  updateClassLabel(d.class_id||'barbarian');
+  set('f_wpn1',d.wpn1); set('f_wpn2',d.wpn2); set('f_wpn_add',d.wpn_add);
+  set('f_aps',d.aps); set('f_str',d.str);
+  set('f_skill_pct',d.skill_pct); setc('f_is_dot',d.is_dot); set('f_hits',d.hits||1);
+  set('f_add_gear',d.add_gear); set('f_add_paragon',d.add_paragon);
+  set('f_crit_dmg_add',d.crit_dmg_add); set('f_crit_chance',d.crit_chance); setc('f_crit_active',d.crit_active!==false);
+  set('f_vuln_add',d.vuln_add); setc('f_vuln_active',d.vuln_active!==false); set('f_vuln_uptime',d.vuln_uptime||80);
+  set('f_op_stacks',d.op_stacks||0); set('f_op_stack_add',d.op_stack_add||15); setc('f_op_active',d.op_active); set('f_op_hp_pct',d.op_hp_pct||100);
+  set('f_monster_dr',d.monster_dr||80); setc('f_apply_dr',d.apply_dr);
+  if(!d.b_multis) d.b_multis=[];
+  if(!d.multi_leg) d.multi_leg=[];
+  renderBMulti(); renderXList(); renderSnapList(); renderBDs();
+}
+
+function updateClassLabel(class_id){
+  const cls=CLASSES.find(c=>c.id===class_id)||CLASSES[0];
+  const stat_el=g('stat-label');
+  if(stat_el&&stat_el.childNodes[0]) stat_el.childNodes[0].textContent=cls.stat_label+'（主属性）';
+  const div_el=g('stat-div-label');
+  if(div_el) div_el.textContent=`系数：1 + ${cls.stat_label}/${cls.stat_div}`;
+}
+
+// B类词缀管理
+function renderBMulti(){
+  const d=activeData(), c=g('xsec-b'); if(!c) return;
+  c.innerHTML='';
+  (d.b_multis||[]).forEach((item,idx)=>{ const div=document.createElement('div'); div.className='xrow';
+    div.innerHTML=`<input class="xname" placeholder="如：×22%物理宝石" value="${item.name||''}" oninput="updateBMultiName(${idx},this.value)"><input class="ni" type="number" value="${item.val||0}" min="0" oninput="updateBMultiVal(${idx},this.value)"><button class="xdel" onclick="delBMulti(${idx})">✕</button>`;
+    c.appendChild(div); });
+}
+function addBMulti(){ const d=activeData(); if(!d.b_multis) d.b_multis=[]; d.b_multis.push({name:'',val:0}); renderBMulti(); saveAll(); }
+function delBMulti(i){ const d=activeData(); d.b_multis.splice(i,1); renderBMulti(); saveAll(); }
+function updateBMultiName(i,v){ const d=activeData(); d.b_multis[i].name=v; saveAll(); }
+function updateBMultiVal(i,v){ const d=activeData(); d.b_multis[i].val=parseFloat(v)||0; saveAll(); }
+function renderXList(){
+  const d=activeData(), c=g('xsec-leg'); if(!c) return;
+  c.innerHTML='';
+  (d.multi_leg||[]).forEach((item,idx)=>{ const div=document.createElement('div'); div.className='xrow';
+    div.innerHTML=`<input class="xname" placeholder="如：旋风斩威能" value="${item.name||''}" oninput="updateXName(${idx},this.value)"><input class="ni" type="number" value="${item.val||0}" min="0" oninput="updateXVal(${idx},this.value)"><button class="xdel" onclick="delX(${idx})">✕</button>`;
+    c.appendChild(div); });
+}
+function addX(){ const d=activeData(); if(!d.multi_leg) d.multi_leg=[]; d.multi_leg.push({name:'',val:0}); renderXList(); saveAll(); }
+function delX(i){ const d=activeData(); d.multi_leg.splice(i,1); renderXList(); saveAll(); }
+function updateXName(i,v){ const d=activeData(); d.multi_leg[i].name=v; saveAll(); }
+function updateXVal(i,v){ const d=activeData(); d.multi_leg[i].val=parseFloat(v)||0; saveAll(); }
+
+// 核心计算引擎 - 修复版
+function calcFromData(d){
+  const wpnBase=(d.wpn1||0)+(d.wpn2||0);
+  if(wpnBase<=0) return null;
+  const wpnAfterAdd=wpnBase*(1+(d.wpn_add||0)/100);
+  const skillMult=(d.skill_pct||100)/100;
+  const afterSkill=wpnAfterAdd*skillMult;
+  const cls=CLASSES.find(c=>c.id===(d.class_id||'barbarian'))||CLASSES[0];
+  const statMult=1+(d.str||0)/cls.stat_div;
+  const afterStat=afterSkill*statMult;
+  const vulnActive=!!d.vuln_active;
+  const opActive=!!d.op_active&&!d.is_dot;
+  const opStackBonus=(d.op_stack_add||15)*(d.op_stacks||0);
+  const addTotal=(d.add_gear||0)+(d.add_paragon||0)+(vulnActive?(d.vuln_add||0):0)+(opActive?opStackBonus:0);
+  const addMult=1+addTotal/100;
+  const afterAdd=afterStat*addMult;
+  let bTotal=0;
+  (d.b_multis||[]).forEach(item=>{ if(item.val>0) bTotal+=item.val; });
+  const bMult=1+bTotal/100;
+  const afterB=afterAdd*bMult;
+  const isDot=!!d.is_dot;
+  const critDmgBonus=0.5+(d.crit_dmg_add||0)/100;
+  let afterCrit;
+  if(isDot) afterCrit=afterB;
+  else afterCrit=d.crit_active?afterB*(1+critDmgBonus):afterB;
+  const vulnMult=vulnActive?1.2:1.0;
+  const afterVuln=afterCrit*vulnMult;
+  let legMult=1;
+  (d.multi_leg||[]).forEach(item=>{ if(item.val>0) legMult*=(1+item.val/100); });
+  const afterLeg=afterVuln*legMult;
+  const afterHits=afterLeg*(d.hits||1);
+  let finalHit=afterHits, opResult=null;
+  if(opActive){
+    const hpPct=Math.min(d.op_hp_pct||100,100)/100;
+    const opHpMult=1+0.5*hpPct;
+    const afterOp=afterHits*opHpMult;
+    const critAfterOp=afterOp*(1+critDmgBonus);
+    const expectedOp=isDot?afterOp:(0.5*afterOp+0.5*critAfterOp);
+    opResult={ normal:afterOp, crit:critAfterOp, expected:expectedOp, hpMult:opHpMult, hpPct:Math.round(hpPct*100) };
+    finalHit=expectedOp;
+  }
+  const finalDisplay=d.apply_dr?finalHit*(1-(d.monster_dr||0)/100):finalHit;
+  return { wpnBase, wpnAfterAdd, afterSkill, afterStat, afterAdd, afterB, afterCrit, afterVuln, afterLeg, afterHits,
+    normalHit:afterLeg, critHit:afterLeg*(1+critDmgBonus), finalHit, finalDisplay,
+    statMult, addMult, bMult, vulnMult, legMult, critDmgBonus, addTotal, bTotal,
+    isDot, vulnActive, opActive, opResult, cls, d };
+}
+
+function calculate(){
+  save(); const d=activeData(); const r=calcFromData(d);
+  if(!r){ toast('请先填入武器伤害！'); return; }
+  lastCalcResult=r; lastCalcData=d;
+  g('r-empty').style.display='none'; g('r-content').style.display='block';
+  const isOp=!!r.opResult;
+  g('r-mode').textContent=isOp?'压制期望伤害（含50%双暴）':r.isDot?'DoT 单次总伤害':'单次施法总伤害';
+  g('r-num').textContent=fmt(r.finalDisplay);
+  if(isOp) g('r-sub').textContent=`压制普通: ${fmt(r.opResult.normal)}  ·  压制暴击: ${fmt(r.opResult.crit)}`;
+  else if(!r.isDot) g('r-sub').textContent=`普通: ${fmt(r.normalHit)}  ·  暴击: ${fmt(r.critHit)}`;
+  else g('r-sub').textContent='DoT 不触发暴击和压制';
+  renderStepsSimple(r,d); renderStepsDetail(r,d); renderDPS(r,d);
+  if(selectedBdId) renderBDCompare();
+  switchRtab('result');
+}
+
+function renderStepsSimple(r,d){
+  const steps=[
+    {icon:'⚔', label:'武器基础点伤', note:d.wpn2>0?`主手${fmt(d.wpn1)}+副手${fmt(d.wpn2)}`:'主手', mult:'', val:r.wpnBase},
+    {icon:'➕', label:`附加武器伤害 [+]${d.wpn_add}%`, note:'', mult:`×${(1+d.wpn_add/100).toFixed(3)}`, val:r.wpnAfterAdd},
+    {icon:'⚡', label:`技能倍率 ${d.skill_pct}%`, note:'', mult:`×${(d.skill_pct/100).toFixed(3)}`, val:r.afterSkill},
+    {icon:'💪', label:`主属区 ${d.str}${r.cls.stat_label}`, note:`系数/${r.cls.stat_div}`, mult:`×${r.statMult.toFixed(4)}`, val:r.afterStat},
+    {icon:'📦', label:`A类区 [+]${r.addTotal.toFixed(0)}%`, note:`装备${d.add_gear}%+巅峰${d.add_paragon}%${r.vulnActive&&d.vuln_add>0?`+易伤${d.vuln_add}%`:''}`, mult:`×${r.addMult.toFixed(4)}`, val:r.afterAdd},
+    {icon:'✨', label:`B类区 [×]${r.bTotal.toFixed(0)}%`, note:`装备/宝石[×]%前缀词条`, mult:`×${r.bMult.toFixed(4)}`, val:r.afterB}
+  ];
+  if(!r.isDot) steps.push({icon:'💥', label:r.d.crit_active?`暴击命中 (1+50%+${d.crit_dmg_add}%)`:'普通命中', note:'', mult:r.d.crit_active?`×${(1+r.critDmgBonus).toFixed(3)}`:'×1', val:r.afterCrit});
+  steps.push({icon:'🔴', label:'易伤区', note:r.vulnActive?'目标易伤':'无易伤', mult:r.vulnActive?'×1.2':'×1', val:r.afterVuln});
+  if(r.legMult>1.001) steps.push({icon:'🏆', label:'独立X乘区', note:(d.multi_leg||[]).filter(x=>x.val>0).map(x=>x.name||`[×]${x.val}%`).join(' · '), mult:`×${r.legMult.toFixed(4)}`, val:r.afterLeg});
+  if((d.hits||1)!==1) steps.push({icon:'🔁', label:`命中数 ×${d.hits}`, note:`单次施法命中${d.hits}次`, mult:`×${d.hits}`, val:r.afterHits});
+  if(r.opResult) steps.push({icon:'⚡', label:`压制 (HP ${r.opResult.hpPct}%)`, note:'50%双暴期望', mult:`×${r.opResult.hpMult.toFixed(3)}`, val:r.opResult.expected});
+  steps.push({icon:'🏆', label:'最终伤害', note:`总乘 ×${(r.finalHit/r.wpnBase).toFixed(1)}`, mult:'', val:r.finalHit, final:true});
+  if(d.apply_dr) steps.push({icon:'🛡', label:`怪物减伤 ${d.monster_dr}%`, note:'', mult:`×${(1-d.monster_dr/100).toFixed(3)}`, val:r.finalDisplay, final:true});
+  const c=g('steps-simple'); c.innerHTML='';
+  steps.forEach((s,i)=>{ const div=document.createElement('div'); div.className='step-s'+(s.final?' hl':''); div.innerHTML=`<div class="step-label">${s.icon} ${s.label}${s.note?`<br><span style="font-size:9px;color:var(--text-muted)">${s.note}</span>`:''}</div><div class="step-mult">${s.mult}</div><div class="step-val">${fmt(s.val)}</div>`; c.appendChild(div); if(i<steps.length-1&&!s.final){ const arr=document.createElement('div'); arr.className='step-arrow'; arr.textContent='↓'; c.appendChild(arr); } });
+}
+
+function renderStepsDetail(r,d){
+  const c=g('steps-detail'); c.innerHTML='';
+  
+  // 辅助函数：安全获取格式化后的值
+  const safeFmt = (val) => val !== undefined && val !== null && !isNaN(val) ? fmt(val) : '—';
+  
+  const stepsData = [
+    { icon:'⚔', name:'武器基础点伤', value: r.wpnBase, desc: `主手 ${fmt(d.wpn1)}${d.wpn2>0 ? ' + 副手 '+fmt(d.wpn2) : ''} = ${safeFmt(r.wpnBase)}`, formula: `${fmt(d.wpn1)}${d.wpn2>0 ? ' + '+fmt(d.wpn2) : ''} = ${safeFmt(r.wpnBase)}` },
+    { icon:'➕', name:'附加武器伤害', value: r.wpnAfterAdd, desc: `${safeFmt(r.wpnBase)} × (1 + ${d.wpn_add}/100) = ${safeFmt(r.wpnBase)} × ${(1+d.wpn_add/100).toFixed(3)} = ${safeFmt(r.wpnAfterAdd)}`, formula: `附加后 = ${safeFmt(r.wpnAfterAdd)}` },
+    { icon:'⚡', name:'技能倍率', value: r.afterSkill, desc: `${safeFmt(r.wpnAfterAdd)} × ${d.skill_pct}% = ${safeFmt(r.wpnAfterAdd)} × ${(d.skill_pct/100).toFixed(3)} = ${safeFmt(r.afterSkill)}`, formula: `技能后 = ${safeFmt(r.afterSkill)}` },
+    { icon:'💪', name:'主属性倍率', value: r.afterStat, desc: `${safeFmt(r.afterSkill)} × (1 + ${d.str}/${r.cls.stat_div}) = ${safeFmt(r.afterSkill)} × ${r.statMult.toFixed(4)} = ${safeFmt(r.afterStat)}`, formula: `主属后 = ${safeFmt(r.afterStat)}` },
+    { icon:'📦', name:'A类区 (加法桶)', value: r.afterAdd, desc: `${safeFmt(r.afterStat)} × (1 + ${r.addTotal.toFixed(0)}/100) = ${safeFmt(r.afterStat)} × ${r.addMult.toFixed(4)} = ${safeFmt(r.afterAdd)}`, formula: `A伤合计: ${r.addTotal.toFixed(0)}%, 乘数: ×${r.addMult.toFixed(4)}` },
+    { icon:'✨', name:'B类区 (独立加法桶)', value: r.afterB, desc: `${safeFmt(r.afterAdd)} × (1 + ${r.bTotal.toFixed(0)}/100) = ${safeFmt(r.afterAdd)} × ${r.bMult.toFixed(4)} = ${safeFmt(r.afterB)}`, formula: `B类合计: ${r.bTotal.toFixed(0)}%, 乘数: ×${r.bMult.toFixed(4)}` }
+  ];
+  
+  if(!r.isDot){
+    stepsData.push({ icon:'💥', name: r.d.crit_active ? '暴击区' : '普通命中', value: r.afterCrit,
+      desc: r.d.crit_active ? `${safeFmt(r.afterB)} × (1 + 0.5 + ${d.crit_dmg_add}/100) = ${safeFmt(r.afterB)} × ${(1+r.critDmgBonus).toFixed(3)} = ${safeFmt(r.afterCrit)}` : `${safeFmt(r.afterB)} × 1 = ${safeFmt(r.afterCrit)}`,
+      formula: r.d.crit_active ? `暴击乘数: ×${(1+r.critDmgBonus).toFixed(3)}` : '无暴击' });
+  }
+  
+  stepsData.push({ icon:'🔴', name:'易伤区', value: r.afterVuln,
+    desc: `${safeFmt(r.afterCrit)} × ${r.vulnActive ? '1.2' : '1.0'} = ${safeFmt(r.afterVuln)}`,
+    formula: r.vulnActive ? '易伤乘数: ×1.2' : '目标无易伤' });
+  
+  if(r.legMult > 1.001){
+    stepsData.push({ icon:'🏆', name:'独立X乘区', value: r.afterLeg,
+      desc: `${safeFmt(r.afterVuln)} × ${r.legMult.toFixed(4)} = ${safeFmt(r.afterLeg)}`,
+      formula: `传奇/威能总乘数: ×${r.legMult.toFixed(4)}` });
+  }
+  
+  if((d.hits||1) !== 1){
+    stepsData.push({ icon:'🔁', name:'命中数', value: r.afterHits,
+      desc: `${safeFmt(r.afterLeg)} × ${d.hits} = ${safeFmt(r.afterHits)}`,
+      formula: `单次施法命中 ${d.hits} 次` });
+  }
+  
+  if(r.opResult){
+    stepsData.push({ icon:'⚡', name:'压制区', value: r.opResult.expected,
+      desc: `生命值 ${r.opResult.hpPct}% → 乘数 ×${r.opResult.hpMult.toFixed(3)}<br>${safeFmt(r.afterHits)} × ${r.opResult.hpMult.toFixed(3)} = ${safeFmt(r.opResult.normal)} (普通)<br>暴击时: ${safeFmt(r.opResult.crit)}<br>期望值(50%暴击): ${safeFmt(r.opResult.expected)}`,
+      formula: `压制期望 = ${safeFmt(r.opResult.expected)}` });
+  }
+  
+  stepsData.push({ icon:'🏆', name:'最终伤害', value: r.finalHit,
+    desc: `${safeFmt(r.finalHit)}`, formula: `最终 = ${safeFmt(r.finalHit)}`, final: true });
+  
+  if(d.apply_dr){
+    stepsData.push({ icon:'🛡', name:'怪物减伤', value: r.finalDisplay,
+      desc: `${safeFmt(r.finalHit)} × (1 - ${d.monster_dr}/100) = ${safeFmt(r.finalHit)} × ${(1-d.monster_dr/100).toFixed(3)} = ${safeFmt(r.finalDisplay)}`,
+      formula: `实际伤害 = ${safeFmt(r.finalDisplay)}`, final: true });
+  }
+  
+  stepsData.forEach((cfg, idx) => {
+    const div = document.createElement('div');
+    div.className = 'step-d' + (cfg.final ? ' final' : '') + (idx < 2 ? ' open' : '');
+    const displayValue = safeFmt(cfg.value);
+    div.innerHTML = `<div class="step-d-head" onclick="this.parentElement.classList.toggle('open')">
+      <div class="step-d-icon">${cfg.icon}</div>
+      <div class="step-d-name">${cfg.name}</div>
+      <div class="step-d-result">${displayValue}</div>
+    </div>
+    <div class="step-d-body">
+      <div class="formula">${cfg.formula}</div>
+      <div style="color:var(--text-muted);font-size:12px;margin-top:6px">${cfg.desc}</div>
+    </div>`;
+    c.appendChild(div);
+  });
+}
+
+function renderDPS(r,d){
+  g('dps-empty').style.display='none'; g('dps-content').style.display='block';
+  const aps=d.aps||1;
+  const cc=Math.min(d.crit_chance||0,100)/100;
+  const cdMult=1+(d.crit_dmg_add||0)/100+0.5;
+  const critExp=r.isDot?1:((1-cc)+cc*cdMult);
+  const vuln_up=(d.vuln_uptime||0)/100;
+  const baseNoVuln=r.afterB*critExp*r.legMult*(d.hits||1);
+  const baseVuln=baseNoVuln*1.2;
+  const avg=baseVuln*vuln_up+baseNoVuln*(1-vuln_up);
+  const dps=avg*aps;
+  g('dps-main').textContent=fmt(dps);
+  g('dps-sub').textContent=`APS ${aps.toFixed(2)} × 单次总伤 ${fmt(avg)}`;
+  g('dps-grid').innerHTML=`<div class="dps-stat"><div class="dps-key">APS</div><div class="dps-val">${aps.toFixed(2)}</div></div><div class="dps-stat"><div class="dps-key">暴击期望</div><div class="dps-val">${critExp.toFixed(3)}</div></div><div class="dps-stat"><div class="dps-key">满易伤DPS</div><div class="dps-val">${fmt(baseVuln*aps)}</div></div>`;
+}
+
+function renderBDCompare(){
+  if(!lastCalcResult||!selectedBdId){ g('bdcmp-empty').style.display='block'; g('bdcmp-content').style.display='none'; return; }
+  const bd=BUILTIN_BDS.find(b=>b.id===selectedBdId);
+  if(!bd)return;
+  const bdR=calcFromData(bd.data);
+  if(!bdR)return;
+  const myVal=lastCalcData?.apply_dr?lastCalcResult.finalDisplay:lastCalcResult.finalHit;
+  const bdVal=bdR.finalHit;
+  const diff=(myVal-bdVal)/bdVal*100;
+  g('bdcmp-empty').style.display='none'; g('bdcmp-content').style.display='block';
+  g('bdcmp-content').innerHTML=`<div class="cmp-title">我的方案 vs ${bd.name}</div><div class="cmp-vs"><div class="cmp-side mine"><div class="cmp-side-title">⚔ 我的方案</div><div class="cmp-side-num">${fmt(myVal)}</div></div><div class="cmp-side bd"><div class="cmp-side-title">${bd.icon} ${bd.name}</div><div class="cmp-side-num">${fmt(bdVal)}</div></div></div><div class="cmp-diff-bar"><div class="cmp-diff-num ${diff>=0?'up':'down'}">${diff>=0?'+':''}${diff.toFixed(1)}%</div></div><div class="cmp-row-list">${cmpRow('武器伤害',(lastCalcData?.wpn1||0)+(lastCalcData?.wpn2||0),(bd.data.wpn1||0)+(bd.data.wpn2||0))}${cmpRow('力量',lastCalcData?.str||0,bd.data.str||0)}${cmpRow('A伤区',(lastCalcData?.add_gear||0)+(lastCalcData?.add_paragon||0),(bd.data.add_gear||0)+(bd.data.add_paragon||0),'%')}</div>`;
+}
+function cmpRow(label,mine,bd,unit=''){ const diff=mine-bd; return `<div class="cmp-row"><span>${label}</span><span>${mine.toLocaleString()}${unit}</span><span>${bd.toLocaleString()}${unit}</span><span class="${diff>0?'pos':diff<0?'neg':''}">${diff>0?'+':''}${diff.toFixed(0)}${unit}</span></div>`; }
+
+function renderBDs(){ const c=g('bd-list'); if(!c)return; c.innerHTML=BUILTIN_BDS.map(bd=>`<div class="bd-card" onclick="toggleBDCard(this,'${bd.id}')"><div class="bd-head"><div class="bd-icon">${bd.icon}</div><div class="bd-info"><div class="bd-name">${bd.name}</div><div class="bd-meta">${bd.desc}</div></div><div class="bd-tier">${bd.tier}</div></div><div class="bd-body"><div class="bd-stat-grid"><div class="bd-stat">武器: <span>${bd.data.wpn1}${bd.data.wpn2>0?'+'+bd.data.wpn2:''}</span></div><div class="bd-stat">力量: <span>${bd.data.str}</span></div><div class="bd-stat">技能: <span>${bd.data.skill_pct}%</span></div><div class="bd-stat">暴击率: <span>${bd.data.crit_chance}%</span></div></div><div class="bd-actions"><button class="btn-bd" onclick="event.stopPropagation();selectBDForCompare('${bd.id}')">选为对比</button><button class="btn-bd primary" onclick="event.stopPropagation();applyBD('${bd.id}')">套用数据</button></div></div></div>`).join(''); }
+function toggleBDCard(el,id){ el.classList.toggle('open'); document.querySelectorAll('.bd-card').forEach(c=>{ if(c!==el) c.classList.remove('open'); }); selectedBdId=id; renderBDs(); }
+function applyBD(id){ const bd=BUILTIN_BDS.find(b=>b.id===id); if(!bd)return; const p=activePlan(); if(!p)return; p.data=JSON.parse(JSON.stringify(bd.data)); if(!p.data.b_multis) p.data.b_multis=[]; if(!p.data.multi_leg) p.data.multi_leg=[]; load(); saveAll(); toast('已套用：'+bd.name); }
+function selectBDForCompare(id){ selectedBdId=id; renderBDs(); toast('已选为对比：'+BUILTIN_BDS.find(b=>b.id===id)?.name); if(lastCalcResult) renderBDCompare(); switchRtab('bdcmp'); }
+
+// 快照系统
+function takeSnapshot(){ save(); const p=activePlan(); if(!p)return; const snaps=JSON.parse(localStorage.getItem(SNAP_KEY)||'[]'); snaps.unshift({id:'snap_'+Date.now(), time:new Date().toLocaleString(), planName:p.name, data:JSON.parse(JSON.stringify(p.data))}); if(snaps.length>MAX_SNAPS) snaps.length=MAX_SNAPS; localStorage.setItem(SNAP_KEY,JSON.stringify(snaps)); renderSnapList(); toast('快照已保存'); }
+function restoreSnapshot(id){ const snaps=JSON.parse(localStorage.getItem(SNAP_KEY)||'[]'); const snap=snaps.find(s=>s.id===id); if(!snap)return; const p=activePlan(); if(!p)return; if(!confirm(`恢复到快照「${snap.time}」？`))return; p.data=JSON.parse(JSON.stringify(snap.data)); saveAll(); load(); toast('已恢复'); }
+function deleteSnapshot(id){ const snaps=JSON.parse(localStorage.getItem(SNAP_KEY)||'[]').filter(s=>s.id!==id); localStorage.setItem(SNAP_KEY,JSON.stringify(snaps)); renderSnapList(); toast('已删除'); }
+function renderSnapList(){ const el=g('snap-list'); if(!el)return; const snaps=JSON.parse(localStorage.getItem(SNAP_KEY)||'[]'); if(!snaps.length){ el.innerHTML='<div style="text-align:center;color:var(--text-muted)">暂无快照</div>'; return; } el.innerHTML=snaps.map(s=>`<div style="display:flex;gap:6px;padding:6px 0;border-bottom:1px solid var(--border-faint)"><div style="flex:1"><div>${s.planName}</div><div style="font-size:10px;color:var(--text-muted)">${s.time}</div></div><button onclick="restoreSnapshot('${s.id}')" style="background:rgba(224,160,32,.1);border:1px solid var(--border-mid);color:var(--fire-2);padding:3px 8px;border-radius:3px;cursor:pointer">恢复</button><button onclick="deleteSnapshot('${s.id}')" style="background:transparent;border:1px solid var(--border-faint);color:var(--text-muted);width:24px;border-radius:3px;cursor:pointer">✕</button></div>`).join(''); }
+
+// 方案管理
+function renderPlanTabs(){ const wrap=g('plan-tabs'); wrap.innerHTML=plans.map(p=>`<div class="ptab ${p.id===activeId?'active':''}" onclick="switchPlan('${p.id}')"><span class="ptab-name" ondblclick="renamePlan('${p.id}',this.parentElement)">${p.name}</span><button class="ptab-x" onclick="event.stopPropagation();deletePlan('${p.id}')">✕</button></div>`).join(''); }
+function switchPlan(id){ if(id===activeId)return; save(); activeId=id; saveAll(); load(); renderPlanTabs(); g('r-empty').style.display='block'; g('r-content').style.display='none'; g('dps-empty').style.display='block'; g('dps-content').style.display='none'; lastCalcResult=null; }
+function newPlan(){ save(); const id='p'+Date.now(); plans.push({id,name:'方案 '+(plans.length+1),data:defaultData()}); activeId=id; saveAll(); load(); renderPlanTabs(); toast('新建方案'); }
+function clonePlan(){ save(); const src=activePlan(); if(!src)return; const id='p'+Date.now(); plans.push({id,name:src.name+' 副本',data:JSON.parse(JSON.stringify(src.data))}); activeId=id; saveAll(); load(); renderPlanTabs(); toast('已复制'); }
+function deletePlan(id){ if(plans.length<=1){toast('至少保留一个方案');return;} plans=plans.filter(p=>p.id!==id); if(activeId===id)activeId=plans[0].id; saveAll(); load(); renderPlanTabs(); }
+function renamePlan(id,el){ const p=plans.find(x=>x.id===id); if(!p)return; const inp=document.createElement('input'); inp.className='ptab-rename'; inp.value=p.name; el.appendChild(inp); inp.focus(); inp.select(); const done=()=>{ if(inp.value.trim()) p.name=inp.value.trim(); inp.remove(); saveAll(); renderPlanTabs(); }; inp.onblur=done; inp.onkeydown=e=>{ if(e.key==='Enter') done(); if(e.key==='Escape') inp.remove(); }; }
+function exportPlan(){ save(); const p=activePlan(); if(!p)return; const blob=new Blob([JSON.stringify({name:p.name,data:p.data},null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`D4_${p.name}_${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(a.href); toast('已导出'); }
+function triggerImportFile(){ g('import-file-input').value=''; g('import-file-input').click(); }
+function handleImportFile(input){ const file=input.files[0]; if(!file)return; const reader=new FileReader(); reader.onload=e=>{ try{ const obj=JSON.parse(e.target.result); if(!obj||!obj.name||!obj.data) throw new Error(); const id='p'+Date.now(); const existName=plans.find(p=>p.name===obj.name); plans.push({id,name:existName?obj.name+' (导入)':obj.name,data:obj.data}); activeId=id; saveAll(); load(); renderPlanTabs(); toast('已导入'); }catch(err){ toast('文件格式错误'); } }; reader.readAsText(file); }
+
+// 页面切换
+function switchPage(name){ g('cols').style.display=name==='sim'?'grid':'none'; g('page-fullcompare').style.display=name==='fullcompare'?'flex':'none'; g('page-guide').style.display=name==='guide'?'block':'none'; document.querySelectorAll('.ttab').forEach(b=>b.classList.toggle('active',b.dataset.page===name)); if(name==='fullcompare') runFullCompare(); if(name==='guide') renderGuide(); }
+function switchRtab(name){ document.querySelectorAll('.rtab').forEach(b=>b.classList.toggle('active',b.dataset.rtab===name)); document.querySelectorAll('.rtab-panel').forEach(p=>p.classList.toggle('active',p.id==='rtab-'+name)); }
+function switchSteps(mode){ stepsMode=mode; g('steps-simple').style.display=mode==='simple'?'flex':'none'; g('steps-detail').style.display=mode==='detail'?'block':'none'; g('st-simple').classList.toggle('active',mode==='simple'); g('st-detail').classList.toggle('active',mode==='detail'); }
+
+function runFullCompare(){
+  const skillPct=215;
+  const allItems=[...plans.map(p=>({id:p.id,name:p.name,data:p.data,type:'user'})), ...BUILTIN_BDS.map(b=>({id:b.id,name:b.icon+' '+b.name,data:b.data,type:'bd'}))];
+  const results=allItems.map(item=>{ const d={...item.data,skill_pct:skillPct,crit_active:false,op_active:false,apply_dr:false}; const r=calcFromData(d); if(!r)return null; return{...item,dmg:r.finalHit}; }).filter(Boolean);
+  const maxDmg=Math.max(...results.map(r=>r.dmg));
+  g('fc-full-content').innerHTML=`<div style="margin-bottom:16px"><h2 style="font-family:Cinzel,serif;font-size:18px">方案对比</h2><select id="fc-skill" style="background:var(--ink-2);border:1px solid var(--border-mid);color:var(--text-secondary);padding:3px 7px;border-radius:2px"><option value="215">旋风斩 215%</option><option value="47">撕裂 47%</option><option value="160">锤击 160%</option></select><button onclick="runFullCompare()" style="margin-left:10px;background:var(--ink-3);border:1px solid var(--border-mid);padding:3px 9px;cursor:pointer">刷新</button></div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px">${results.map(r=>`<div style="background:var(--ink-3);border:1px solid ${r.type==='bd'?'rgba(61,122,191,.4)':'var(--border-soft)'};border-radius:3px;padding:10px"><div style="font-family:Cinzel,serif;font-size:10px;color:${r.type==='bd'?'#7ab0f0':'var(--fire-2)'}">${r.name}</div><div style="font-family:Cinzel,serif;font-size:18px;font-weight:700;color:var(--fire-1)">${fmt(r.dmg)}</div><div style="height:4px;background:var(--ink-0);margin:6px 0"><div style="width:${(r.dmg/maxDmg*100)}%;height:100%;background:var(--emerald)"></div></div>${r.type!=='bd'?`<button onclick="switchPlan('${r.id}');switchPage('sim')" style="width:100%;margin-top:6px;padding:3px;background:var(--ink-2);border:1px solid var(--border-mid);cursor:pointer">切换</button>`:''}</div>`).join('')}</div>`;
+}
+
+function renderGuide(){
+  g('guide-content').innerHTML=`<div style="margin-bottom:28px"><h2 style="font-family:Cinzel,serif;font-size:26px">S13 伤害公式说明</h2><p style="color:var(--text-muted)">暗黑4 第13赛季（憎恨之躯3.0）· 全职业通用</p></div>
+  <div style="background:var(--ink-1);border:1px solid var(--border-mid);border-radius:8px;padding:20px;margin-bottom:20px"><h3>📐 完整公式</h3><pre style="font-family:'Share Tech Mono',monospace;margin-top:10px;line-height:1.8">最终伤害 = 武器点伤 × 技能倍率 × 主属区 × A类区(加法桶) × B类区(独立加法桶) × 暴击区 × 易伤区 × 独立X乘区 × 压制区 × 命中数</pre></div>
+  <div style="background:var(--ink-2);border-left:4px solid var(--fire-2);padding:16px;margin-bottom:16px"><h3>✨ B类区（S13新增核心）</h3><p>装备/宝石上的 <strong style="color:var(--fire-1)">[×]% 前缀</strong>词缀 → 同名先相加，整体作为一个独立乘区<br>示例：两颗 [×]22% 物理宝石 → 同名相加填44%</p></div>
+  <div style="background:var(--ink-2);border-left:4px solid var(--emerald);padding:16px;margin-bottom:16px"><h3>📦 A类区（加法桶）</h3><p>所有 <strong style="color:#70b8ff">[+]% 前缀</strong>词缀全部加法合算：装备、巅峰、易伤[+]%、暴击[+]%、压制叠层加成</p></div>
+  <div style="background:var(--ink-2);border-left:4px solid var(--fire-1);padding:16px;margin-bottom:16px"><h3>🏆 独立X乘区（纯乘法）</h3><p>传奇威能、套装效果、<strong style="color:var(--fire-1)">[×]% 后缀</strong>词缀各自独立相乘，收益最高</p></div>
+  <div style="background:var(--ink-2);border-left:4px solid var(--amber);padding:16px"><h3>⚡ 压制区（S13重做）</h3><p>叠层加成归入A类区，生命值决定乘数：满血×1.5，半血×1.25，空血×1.0</p></div>`;
+}
+
+// 初始化
+loadAll(); load(); renderPlanTabs(); renderSnapList();
+document.querySelectorAll('.ttab').forEach(b=>b.onclick=()=>switchPage(b.dataset.page));
+document.querySelectorAll('.rtab').forEach(b=>b.onclick=()=>switchRtab(b.dataset.rtab));
+</script>
+</body>
+</html>
